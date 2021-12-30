@@ -279,12 +279,15 @@ h1 {
   padding: 20px;
   color: #666;
   text-align: center;
-  border: solid 1px #bbb;
+  border: solid 1px #dedede;
+  border-radius: 7px;
+  background: #efefef;
   cursor: pointer;
   transition: 0.5s;
 }
 .sidebar > div:hover {
-  border: solid 1px #666;
+  border: solid 1px #aaa;
+  background: #fff;
 }
 
 .sidebar > div > h3 {
@@ -467,6 +470,8 @@ h1 {
 .sidebar .cart {
   border: none;
   border-top: solid 1px #bbb;
+  border-radius: 0;
+  background: #fff;
 }
 .sidebar .cart:hover {
   border: none;
@@ -596,6 +601,7 @@ h1 {
   margin: 30px;
   padding: 0;
   border: none;
+  background: #fff;
   cursor: auto;
 }
 .sidebar .incart:hover {
