@@ -25,7 +25,7 @@ body {
 
 h1 {
     margin: 40px 20px 15px 30px;
-    color: #888;
+    color: #666;
     font-size: 50px;
     font-weight: 300;
     text-transform: uppercase;
@@ -166,6 +166,9 @@ h1 {
 .tiser:hover {
     transform: translateY(2px);
 }
+.tiser:hover img {
+    opacity: 1;
+}
 
 .tiser img {
     width: 200px;
@@ -173,7 +176,9 @@ h1 {
     padding: 10px;
     border: solid 1px #aaa;
     border-radius: 7px;
+    opacity: 0.7;
     cursor: pointer;
+    transition: .3s;
 }
 
 .tiser h2 {
@@ -349,4 +354,277 @@ h1 {
 }
 .footer .author a:hover {
     border-bottom: solid 1px red;
+}
+
+.path ul {
+    margin-top: 20px;
+    list-style-type: none;
+}
+
+.path ul>li {
+    padding: 20px 0;
+    display: inline-block;
+    font-size: 17px;
+    color: steelblue;
+    cursor: pointer;
+    transition: .3s;
+}
+.path ul>li:hover {
+    color: #000;
+}
+
+.path .active {
+    cursor: auto;
+    color: #000;
+}
+
+.path ul>li::after {
+    content: '►';
+    margin: 0 10px;
+}
+
+.path ul>li:last-child::after {
+    content: '';
+}
+
+.photo img {
+    margin: 30px;
+    width: 300px;
+    padding: 10px;
+    border: solid 1px #888;
+    border-radius: 7px;
+}
+
+.text {
+    margin: 30px;
+    width: 400px;
+}
+
+.text h2 {
+    font-size: 40px;
+    color: #666;
+}
+
+.text h3 {
+    color: #888;
+    margin: 15px 0;
+}
+
+.text h3 span {
+    color: #666;
+}
+
+.text .price {
+    margin-bottom: 40px;
+}
+
+.text .price span {
+    color: red;
+}
+
+.text td {
+    padding: 5px 20px 5px 0;
+}
+
+.text td:nth-child(odd) {
+    color: #888;
+}
+
+.text td:nth-child(even) {
+    color: #333;
+}
+
+.text hr {
+    margin-top: 10px;
+}
+
+.text .buttons div {
+    display: inline-block;
+    margin: 30px 5px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px #888;
+    transition: .5s;
+}
+.text .buttons div:active {
+    box-shadow: 0 1px 4px #888;
+    transform: translateY(4px);
+}
+
+.text .tocart {
+    border: solid 1px steelblue;
+}
+.text .tocart:hover {
+    background: rgba(70, 130, 180, 0.9);
+    color: #fff;
+}
+
+.text .tofavorites {
+    border: solid 1px brown;
+}
+.text .tofavorites:hover {
+    background: rgba(165, 42, 42, 0.8);
+    color: #fff;
+}
+
+.sidebar .cart {
+    border: none;
+    border-top: solid 1px #bbb;
+}
+.sidebar .cart:hover {
+    border: none;
+    border-top: solid 1px #666;
+}
+
+.sidebar .cart .good {
+    margin-bottom: 20px;
+}
+
+.sidebar .cart .good img {
+    width: 100px;
+    padding: 5px;
+    border: solid 1px #aaa;
+    border-radius: 5px;
+    margin: 0 0 10px 20px;
+}
+
+.sidebar .cart .good h4 {
+    margin-bottom: 5px;
+    color: steelblue;
+}
+
+.sidebar .cart .good h4.num {
+    display: inline-block;
+    color: #888;
+}
+
+.sidebar .cart .good h4.num span {
+    color: steelblue;
+}
+
+.sidebar .cart .good h4.price {
+    display: inline-block;
+    color: #888;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #aaa;
+    margin-bottom: 20px;
+}
+
+.sidebar .cart .good h4.price span {
+    color: red;
+}
+
+.sidebar h3.sum {
+    display: inline-block;
+    padding: 10px;
+    border: solid 1px red;
+    border-radius: 5px;
+}
+
+.sidebar .cart h3.link {
+    display: inline-block;
+    color: steelblue;
+}
+.sidebar .cart h3.link:hover {
+    color: #000;
+}
+
+.sidebar .cart .good>span {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    padding: 5px;
+    color: #fff;
+    background: rgba(255, 0, 0, 0.8);
+    border-radius: 50%;
+    position: relative;
+    top: -110px;
+    left: -15px;
+    z-index: 10;
+}
+.sidebar .cart .good>span:hover {
+    border: solid 1px brown;
+}
+
+.good-list {
+    width: 100%;
+    margin: 30px 0 50px 20px;
+}
+
+.good-list th {
+    color: #666;
+    padding: 10px;
+    text-align: left;
+    border-bottom: solid 1px #666;
+}
+
+.good-list td {
+    padding: 10px;
+}
+
+.good-list img {
+    width: 100px;
+    padding: 5px;
+    border: solid 1px #aaa;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.good-list .link {
+    color: steelblue;
+    cursor: pointer;
+}
+.good-list .link:hover {
+    text-decoration: underline;
+}
+
+.good-list .delete {
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    line-height: 30px;
+    background: rgba(255, 0, 0, 0.8);
+    border: solid 1px #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .3s;
+}
+.good-list .delete:hover {
+    border: solid 1px brown;
+}
+
+.sidebar .incart {
+    margin: 30px;
+    padding: 0;
+    border: none;
+    cursor: auto;
+}
+.sidebar .incart:hover {
+    border: none;
+}
+
+.sidebar .incart h3 {
+    width: 150px;
+}
+
+.sidebar .incart .sale {
+    display: inline-block;
+    padding: 10px;
+    border: solid 1px steelblue;
+    border-radius: 5px;
+    color: steelblue;
+    cursor: pointer;
+    box-shadow: 0 2px 4px #888;
+    transition: .3s;
+}
+.sidebar .incart .sale:hover {
+    background: steelblue;
+    color: #fff;
+}
+.sidebar .incart .sale:active {
+    box-shadow: 0 1px 4px #888;
+    transform: translateY(4px);
 }
