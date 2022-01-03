@@ -526,6 +526,7 @@ h1 {
 .sidebar .cart h3.link {
   display: inline-block;
   color: steelblue;
+  transition: .3s;
 }
 .sidebar .cart h3.link:hover {
   color: #000;
@@ -537,15 +538,17 @@ h1 {
   height: 15px;
   padding: 5px;
   color: #fff;
+  line-height: 15px;
   background: rgba(255, 0, 0, 0.8);
   border-radius: 50%;
   position: relative;
   top: -110px;
   left: -15px;
   z-index: 10;
+  transition: .3s;
 }
 .sidebar .cart .good > span:hover {
-  border: solid 1px brown;
+  transform: scale(120%);
 }
 
 .good-list {
@@ -594,7 +597,17 @@ h1 {
   transition: 0.3s;
 }
 .good-list .delete:hover {
-  border: solid 1px brown;
+  transform: scale(120%);
+}
+
+.good-list table tr:nth-child(odd) {
+    color: steelblue;
+    cursor: pointer;
+}
+
+.good-list table td {
+    padding: 0;
+    text-align: center;
 }
 
 .sidebar .incart {
@@ -629,4 +642,26 @@ h1 {
 .sidebar .incart .sale:active {
   box-shadow: 0 1px 4px #888;
   transform: translateY(4px);
+}
+
+.order {
+    margin: 30px 30px 50px 480px;
+    width: 320px;
+    text-align: center;
+}
+
+.order div {
+    margin-bottom: 30px;
+}
+
+.order p {
+    margin: 10px;
+}
+
+.order input, .order button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    border: solid 1px #888;
+    border-radius: 5px;
 }
