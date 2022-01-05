@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель администратора - Компьютерная барахолка</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="head">
+            <table>
+                <tr>
+                    <td><img src="logo.jpg" alt="logo"></td>
+                    <td>
+                        <h1>Компьютерная барахолка</h1>
+                        <table>
+                            <tr>
+                                <td>
+                                    <ul>
+                                        <li>Главная</li>
+                                        <li>Корзина</li>
+                                        <li>Вход/регистрация</li>
+                                    </ul>
+                                </td>
+                                <td align="right">
+                                    <img id="insta" src="insta.png" alt="instagram" align="right">
+                                    <p>+7 (707) 024 59 43</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="path">
+            <ul>
+                <li>Главная панель</li>
+                <li class="active">Список заказов</li>
+            </ul>
+        </div>
+
+        <div class="main">
+            <div class="content">
+                <table class="good-list">
+                    <tr>
+                        <th>Дата</th>
+                        <th>Список товаров</th>
+                        <th>Стоимость</th>
+                        <th>Имя</th>
+                        <th>Тел/email</th>
+                        <th>Статус заказа</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>03.10.2021</td>
+                        <td>
+                            <textarea cols="30" rows="5">
+                                2 x DDR3 Transcend 2Gb
+                                1 x HDD Western Digital 1Tb
+                            </textarea>
+                        </td>
+                        <td>
+                            <input type="text" value="23 000 тг">
+                        </td>
+                        <td>Андрей</td>
+                        <td>andre_korkin@mail.ru</td>
+                        <td>
+                            <select>
+                                <option>Выполнен</option>
+                                <option>Достален</option>
+                                <option>Оплачен</option>
+                                <option selected>Подтвержден</option>
+                                <option>Новый</option>
+                            </select>
+                        </td>
+                        <td><div class="delete">×</div></td>
+                    </tr>
+                    
+                </table>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <ul>
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <ul>
+                <li>Политика конфиденциальности</li>
+                <li>Условия оплаты, доставки и возврата</li>
+                <li>Выкуп комплектующих</li>
+            </ul>
+
+            <div class="author">Создание сайта: <a href="#" target="_blank">KStudio</a></div>
+        </div>
+    </div>
+</body>
+</html>

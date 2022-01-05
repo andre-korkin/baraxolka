@@ -318,6 +318,27 @@ h1 {
   content: "► ";
 }
 
+.sidebar select {
+  margin-bottom: 20px;
+  width: 200px;
+  padding: 10px;
+  color: #666;
+  border: solid 1px #bbb;
+  border-radius: 5px;
+}
+
+.sidebar select.first {
+  margin-top: 25px;
+}
+
+.sidebar input {
+  margin-bottom: 20px;
+  padding: 10px;
+  color: #666;
+  border: solid 1px #bbb;
+  border-radius: 5px;
+}
+
 .footer {
   border-top: solid 2px rgb(15, 94, 160);
   padding: 20px 0;
@@ -387,11 +408,21 @@ h1 {
 }
 
 .photo img {
-  margin: 30px;
+  display: block;
+  margin: 20px 0 0 30px;
   width: 300px;
   padding: 10px;
   border: solid 1px #888;
   border-radius: 7px;
+}
+
+.photo input {
+  margin: 30px;
+  width: 300px;
+  padding: 10px;
+  color: #666;
+  border: solid 1px #bbb;
+  border-radius: 5px;
 }
 
 .text {
@@ -465,6 +496,30 @@ h1 {
 .text .tofavorites:hover {
   background: rgba(165, 42, 42, 0.8);
   color: #fff;
+}
+
+.text input {
+  margin-bottom: 20px;
+  width: 300px;
+  padding: 10px;
+  color: #666;
+  border: solid 1px #bbb;
+  border-radius: 5px;
+}
+
+.text .editline {
+  margin-bottom: 25px;
+  width: 320px;
+  border: none;
+  border-top: dashed 1px red;
+}
+
+.text textarea {
+  width: 300px;
+  padding: 10px;
+  color: #666;
+  border: solid 1px #bbb;
+  border-radius: 5px;
 }
 
 .sidebar .cart {
@@ -625,6 +680,29 @@ h1 {
 .good-list table td {
     padding: 0;
     text-align: center;
+}
+
+.good-list textarea {
+  width: 240px;
+  border: solid 1px #bbb;
+  color: #666;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+.good-list input {
+  width: 100px;
+  padding: 10px;
+  border: solid 1px #bbb;
+  color: #666;
+  border-radius: 5px;
+}
+
+.good-list select {
+  padding: 10px;
+  border: solid 1px #bbb;
+  color: #666;
+  border-radius: 5px;
 }
 
 .sidebar .incart {
