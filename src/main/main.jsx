@@ -3,11 +3,11 @@ import Content from './content'
 import Sidebar from './sidebar'
 
 
-const Main = () => {
+const Main = ({ ...props }) => {
     return (
         <div className="main">
-            <Content />
-            <Sidebar />
+            <Content { ...props } />
+            <Sidebar { ...props } />
         </div>
     )
 }

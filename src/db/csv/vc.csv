@@ -1,0 +1,28 @@
+Артикул;Название;Состояние;Цена;Количество;Тип интерфейса;Частота ядра;Тип ОЗУ;Объем ОЗУ;Разрядность шины;Доп. Питание;Минимальная мощность БП;Cinebench15;Unigine;Фото
+3001;nVIDIA RIVA TNT2 M64;среднее;500;1;AGP;125 МГц;DDR;16 МБ;32;;;;;agp_nvidia_riva_tnt2_m64.jpg
+3002;MX400;среднее;1000;1;AGP;170 МГц;DDR;64 МБ;32;;;;;agp_mx400.jpg
+3003;Radeon 9250;хорошее;1500;3;AGP;240 МГц;DDR;128 МБ;64;;;;;agp_radeon_9250.jpg
+3004;GeForce FX5500;хорошее;2500;1;AGP;270 МГц;DDR;128 МБ;128;;;;;agp_geforce_fx5500.jpg
+3005;GeForce FX5500;хорошее;5000;1;AGP;270 МГц;DDR;256 МБ;128;;;;;agp_geforce_fx5500.jpg
+3006;Radeon X600;хорошее;1000;1;PCI;400 МГц;DDR;128 МБ;128;;;;;pci_radeon_x600.jpg
+3007;Radeon X700;хорошее;2000;1;PCI;425 МГц;DDR;256 МБ;128;;;;;pci_radeon_x700.jpg
+3008;Albatron 8600GT;хорошее;3000;1;PCI;540 МГц;DDR2;256 МБ;128;;;;;pci_albatron_8600gt.jpg
+3009;Inno3D GF-8500-GT;хорошее;4000;1;PCI;460 МГц;DDR2;512 МБ;128;;;;;pci_inno3d_gf-8500-gt.jpg
+3010;Zotac GeForce 9500GT;хорошее;6000;1;PCI;550 МГц;DDR2;1 ГБ;128;;;;;pci_zotac_geforce_9500gt.jpg
+3011;Sapphire HD 2400 XT;хорошее;3000;2;PCI;700 МГц;DDR3;256 МБ;64;;;;;pci_sapphire_hd_2400_xt.jpg
+3012;Inno3D 6600;хорошее;3500;1;PCI;500 МГц;DDR3;256 МБ;128;;;;;pci_inno3d_6600.jpg
+3013;Palit GT610;хорошее;7000;1;PCI 2.0;810 МГц;DDR3;1 ГБ;64;;;17.43;1.92;pci2_palit_gt610.jpg
+3014;Palit GT610;хорошее;8000;1;PCI 2.0;810 МГц;DDR3;2 ГБ;64;;;17.05;1.92;pci2_palit_gt610.jpg
+3015;nVIDIA GT630;хорошее;10000;1;PCI 2.0;750 МГц;DDR3;1 ГБ;128;;;16.41;2.5;pci2_nvidia_tg630.jpg
+3016;Palit GT430;хорошее;12000;1;PCI 2.0;700 МГц;DDR3;2 ГБ;128;;;28.27;3.47;pci2_palit_gt430.jpg
+3017;Palit GT630;хорошее;13000;1;PCI 2.0;780 МГц;DDR3;2 ГБ;128;;;30.13;2.47;
+3018;Palit GT440;среднее;13000;1;PCI 2.0;780 МГц;DDR3;1 ГБ;128;;;30.38;3.6;pci2_palit_gt440.jpg
+3019;Palit GT730;отличное;15000;1;PCI 2.0;700 МГц;DDR3;4 ГБ;128;;;15.75;2.55;pci2_palit_gt730.jpg
+3020;Gigabyte GV-R485-512H-B (Radeon HD 4850);среднее;10000;1;PCI 2.0;625 МГц;DDR3;512 МБ;256;;;;;pci2_gigabyte_radeon_hd_4850.jpg
+3021;Zotac GTS250;отличное;17000;1;PCI 2.0;740 МГц;DDR3;1 ГБ;256;;;45.44;8.62;pci2_zotac_gts250.jpg
+3022;Asus EAH5770;хорошее;12000;1;PCI 2.1;850 МГц;DDR5;512 МБ;256;;;48.75;3.35;pci2_asus_eah5770.jpg
+3023;Sapphire HD6570;отличное;16000;1;PCI 2.1;650 МГц;DDR5;1 ГБ;128;;;39.67;4.8;pci2_sapphire_hd6570.jpg
+3024;Sapphire HD7750;отличное;17000;1;PCI 2.1;800 МГц;DDR5;1 ГБ;128;;;52.27;9.6;pci2_sapphire_hd7750.jpg
+3025;Zotac GTX 550 Ti;хорошее;20000;1;PCI 2.0;900 МГц;DDR5;1 ГБ;192;;;59.96;10.85;pci2_zotac_gtx_550ti.jpg
+3026;Palit GTX 1050;отличное;70000;1;PCI 3.0;1354 МГц;DDR5;2 ГБ;128;;;85.3;30.6;pci3_palit_gtx1050.jpg
+3027;Point of View GT640;среднее;11000;1;PCI 2.0;810 МГц;DDR3;2 ГБ;128;;;31;3.5;pci2_point-of-view_gt640.jpg

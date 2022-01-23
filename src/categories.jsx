@@ -1,18 +1,24 @@
 import React from 'react'
 
 
-const Categories = () => {
+const Categories = ({ category, onChange }) => {
+    const catList = [
+        {artcl: '', name: 'Все товары'},
+        {artcl: '0', name: 'Процессоры'},
+        {artcl: '1', name: 'Материнские платы'},
+        {artcl: '2', name: 'Оперативная память'},
+        {artcl: '3', name: 'Видеокарты'},
+        {artcl: '4', name: 'Жесткие диски'},
+        {artcl: '5', name: 'Блоки питания'},
+        {artcl: 'f', name: 'Разное'}
+    ]
+
     return (
         <div className="categories">
             <ul>
-                <li className="active">Все товары</li>
-                <li>Готовые сборки</li>
-                <li>Процессоры</li>
-                <li>Материнские платы</li>
-                <li>Оперативная память</li>
-                <li>Жесткие диски</li>
-                <li>Блоки питания</li>
-                <li>Разное</li>
+                {catList.map(cat => {
+                    return <li className={category === cat.artcl ? 'active' : ''} onClick={() => onChange(cat.artcl)} key={cat.artcl}>{cat.name}</li>
+                })}
             </ul>
         </div>
     )

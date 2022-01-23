@@ -13,6 +13,7 @@ body {
 
 .container {
   width: 1200px;
+  user-select: none;
 }
 
 .head table td {
@@ -588,7 +589,7 @@ h1 {
 .sidebar .cart h3.link {
   display: inline-block;
   color: steelblue;
-  transition: .3s;
+  transition: 0.3s;
 }
 .sidebar .cart h3.link:hover {
   color: #000;
@@ -607,7 +608,7 @@ h1 {
   top: -110px;
   left: -15px;
   z-index: 10;
-  transition: .3s;
+  transition: 0.3s;
 }
 .sidebar .cart .good > span:hover {
   transform: scale(120%);
@@ -680,13 +681,13 @@ h1 {
 }
 
 .good-list table tr:nth-child(odd) {
-    color: steelblue;
-    cursor: pointer;
+  color: steelblue;
+  cursor: pointer;
 }
 
 .good-list table td {
-    padding: 0;
-    text-align: center;
+  padding: 0;
+  text-align: center;
 }
 
 .good-list textarea {
@@ -747,23 +748,24 @@ h1 {
 }
 
 .order {
-    margin: 30px 30px 50px 480px;
-    width: 320px;
-    text-align: center;
+  margin: 30px 30px 50px 480px;
+  width: 320px;
+  text-align: center;
 }
 
 .order div {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .order p {
-    margin: 10px;
+  margin: 10px;
 }
 
-.order input, .order button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px;
-    border: solid 1px #888;
-    border-radius: 5px;
+.order input,
+.order button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  border: solid 1px #888;
+  border-radius: 5px;
 }

@@ -1,17 +1,17 @@
 import React from 'react'
 import Condition from './sidebar/condition'
-import Socket from './sidebar/socket'
-import SidebarCart from './sidebar/sidebarCart'
-import InCart from './sidebar/inCart'
+// import Socket from './sidebar/socket'
+// import SidebarCart from './sidebar/sidebarCart'
+// import InCart from './sidebar/inCart'
 
 
-const Sidebar = () => {
+const Sidebar = ({ ...props }) => {
     return (
         <div className="sidebar">
-            {/* <Condition /> */}
+            <Condition />
             {/* <Socket /> */}
             {/* <SidebarCart /> */}
-            <InCart />
+            {/* <InCart /> */}
         </div>
     )
 }

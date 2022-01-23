@@ -1,0 +1,15 @@
+Артикул;Название;Состояние;Цена;Количество;Сокет;Чипсет;Частота системной шины;Тип ОЗУ;Частота ОЗУ;Объем ОЗУ;Тип видео-интерфейса;Тип HDD-интерфейса;Тип USB;Звук;Фото
+1001;Epox EP-4PDA3I-3;хорошее;2000;1;478;865;400, 533, 800;DDR;400;4x1;AGP;ATA;2.0;2.0;478_epox_ep-4pda3I-3.jpg
+1002;Foxconn RC4107MA-8KRS2H;хорошее;1000;1;775;;533, 800;DDR2;667;2x1;PCI;ATA, 4xSATA;2.0;5.1;775_foxconn_rc4107ma-8krs2h.jpg
+1003;Intel D945GCCR;хорошее;1000;1;775;945;533, 800;DDR2;667;2x1;PCI;ATA, 4xSATA;2.0;2.0;775_intel_d945gccr.jpg
+1004;Biostar P4M900-M7FE;хорошее;3000;1;775;;533, 667, 800, 1066;DDR2;533, 667, 800;2x2;PCI;ATA, 2xSATA;2.0;2.0;775_biostar_p4m900-m7fe.jpg
+1005;Intel Desktop Board D915GUX;хорошее;3000;1;775;915;533, 800;DDR2;400, 533;4x1;PCI;ATA, 4xSATA;2.0;2.0;775_intel_d915gux.jpg
+1006;Intel DG31PR;хорошее;4000;1;775;G31;667, 800;DDR2;800;2x2;PCI 2.0;ATA, 4xSATA;2.0;2.0;775_intel_dg31pr.jpg
+1007;MSI MS-7267 945GCM5;хорошее;5000;1;775;945;533, 800;DDR2;800;2x2;PCI;ATA, 4xSATA;2.0;5.1;775_msi_945gcm5.jpg
+1008;Asus P5Q;хорошее;11000;1;775;P45;1600;DDR2;667, 800, 1066, 1200;4x2;PCI 2.0;ATA, 8xSATAII;2.0;5.1;775_asus_p5q.jpg
+1009;AsRock G31M-VS;хорошее;9000;1;775;G31;1333;DDR2;800;2x2;PCI;ATA, 2xSATAII;2.0;2.0;775_asrock_g31m-vs.jpg
+1010;Eliegroup G41T-MR23;хорошее;12000;1;775;G41;1333;DDR2, DDR3;800, 1333;2x2, 2x4;PCI;ATA, 4xSATAII;2.0;2.0;
+1012;Elitegroup H67H2-M3;отличное;22000;1;1155;H67;;DDR3;1066, 1333;2x8;PCI 2.0;4xSATA3;2.0;2.0;1155_elitegroup_h67h2-m3.jpg
+1013;Asus Z87-K;отличное;30000;1;1150;Z87;;DDR3;1333, 1600;4x8;2xPCI 3.0;6xSATA3;3.0, 2.0;2.0;1150_asus_z87-k.jpg
+1014;Elitegroup H61H2-A;отличное;20000;1;1155;H61;;DDR3;1066, 1333, 1600;2x8;PCI 2.0;4xSATAII;2.0;2.0;1155_elitegroup_h61h2-a.jpg
+1015;AsRock H81M-DGS;среднее;20000;1;1150;H81;;DDR3;1066, 1333, 1600;2x8;PCI 2.0;2xSATA3, 2xSATAII;3.0, 2.0;2.0;1150_asrock_h81m-dsg.jpg

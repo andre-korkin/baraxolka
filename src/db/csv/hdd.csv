@@ -1,0 +1,9 @@
+Артикул;Состояние;Цена;Количество;Тип накопителя;Бренд;Объем;Тип интерфейса;Фото
+4001;хорошее;1000;2;HDD;Seagate;80 ГБ;ATA;hdd_seagate_ata_80.jpg
+4002;хорошее;3000;1;HDD;Samsung;250 ГБ;SATAII;hdd_samsung_sata_250.jpg
+4003;хорошее;7000;1;HDD;Samsung;500 ГБ;SATAII;hdd_samsung_sata_500.jpg
+4004;хорошее;7000;1;HDD;Seagate;500 ГБ;SATAII;hdd_seagate_sata_500.jpg
+4005;хорошее;7000;1;HDD;Hitachi;500 ГБ;SATAII;hdd_hitachi_sata_500.jpg
+4006;хорошее;7000;1;HDD;WD Blue;500 ГБ;SATAII;hdd_wd_blue_sata_500.jpg
+4007;хорошее;8000;1;HDD;Toshiba;500 ГБ;SATA3;hdd_toshiba_sata_500.jpg
+4008;хорошее;12000;2;HDD;Seagate;1 ТБ;SATAII;hdd_seagate_sata_1000.jpg
