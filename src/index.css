@@ -16,18 +16,22 @@ body {
   user-select: none;
 }
 
+.head table {
+  width: 100%;
+}
+
 .head table td {
   vertical-align: top;
 }
 
 .head table td table {
-  width: 100%;
+  width: 875px;
 }
 
 h1 {
-  margin: 40px 20px 15px 30px;
+  margin: 50px 20px 15px 75px;
   color: #333;
-  font-size: 50px;
+  font-size: 52px;
   font-weight: 300;
   text-transform: uppercase;
   font-family: "Comfortaa", cursive;
@@ -108,7 +112,7 @@ h1 {
 .before-content {
   display: flex;
   justify-content: space-between;
-  margin: 50px 40px 50px 0;
+  margin: 50px 20px 50px 0;
 }
 
 .before-content > div {
@@ -283,7 +287,7 @@ h1 {
 }
 
 .sidebar > div {
-  margin: 30px 40px 30px 50px;
+  margin: 30px 20px 30px 50px;
   padding: 20px;
   color: #666;
   text-align: center;

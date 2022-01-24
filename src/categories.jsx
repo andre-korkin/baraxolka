@@ -5,12 +5,14 @@ const Categories = ({ category, onChange }) => {
     const catList = [
         {artcl: '', name: 'Все товары'},
         {artcl: '0', name: 'Процессоры'},
-        {artcl: '1', name: 'Материнские платы'},
-        {artcl: '2', name: 'Оперативная память'},
+        {artcl: '1', name: 'Мат. платы'},
+        {artcl: '2', name: 'Оп. память'},
         {artcl: '3', name: 'Видеокарты'},
-        {artcl: '4', name: 'Жесткие диски'},
-        {artcl: '5', name: 'Блоки питания'},
-        {artcl: 'f', name: 'Разное'}
+        {artcl: '4', name: 'Накопители'},
+        {artcl: '5', name: 'Бл. питания'},
+        {artcl: '6', name: 'Кулеры'},
+        {artcl: '8', name: 'Комплекты'},
+        {artcl: '9', name: 'Сборки'}
     ]
 
     return (

@@ -4,7 +4,7 @@ import React from 'react'
 const Tiser =({ data }) => {
     return (
         <div className='tiser'>
-            <img src={imgPrefix() + data['Фото']} alt='' />
+            <img src={data['Фото'] ? imgPrefix() + data['Фото'] : './img/no-image.png'} alt='' />
             <h2>{goodName()}</h2>
             <h3>{data['Цена'] + ' тг'}</h3>
             <div className='buttons'>
@@ -39,10 +39,7 @@ const Tiser =({ data }) => {
                 prefix += 'bp/'
                 break
             case '6':
-                prefix += 'cool_cpu/'
-                break
-            case '7':
-                prefix += 'cool_case/'
+                prefix += 'cool/'
                 break
             default:
                 break
@@ -66,8 +63,8 @@ const Tiser =({ data }) => {
             case '5':
                 title += ' ' + data['Мощность'] + ' Вт'
                 break
-            case '7':
-                title += ' ' + data['Диаметр'] + ' мм'
+            case '6':
+                title += !data['Сокет'] ? ' ' + data['Диаметр'] + ' мм' : ''
                 break
             default:
                 break

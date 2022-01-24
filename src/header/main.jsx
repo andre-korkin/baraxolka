@@ -10,7 +10,7 @@ const Head = () => {
                 <tbody>
                     <tr>
                         <td><img src="./logo.jpg" alt="logo" /></td>
-                        <td>
+                        <td align="right">
                             <h1>Компьютерная барахолка</h1>
                             <table>
                                 <tbody>
