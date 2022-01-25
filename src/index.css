@@ -145,6 +145,7 @@ h1 {
   color: #666;
   border: solid 1px #bbb;
   width: 600px;
+  padding: 10px;
 }
 .search:hover {
   border: solid 1px #666;

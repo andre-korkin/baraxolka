@@ -10,14 +10,15 @@ import Footer from './footer/main'
 
 function App() {
     const [category, setCategory] = useState('')
+    const [search, setSearch] = useState('')
 
     return (
         <div className="container">
             <Head />
             <Categories category={category} onChange={handleChange} />
-            <BeforeContent />
+            <BeforeContent search={search} onChange={handleSearch} />
             {/* <Path /> */}
-            <Main category={category} />
+            <Main category={category} search={search} />
             <Pagination />
             <Footer />
         </div>
@@ -26,6 +27,10 @@ function App() {
 
     function handleChange(artcl) {
         setCategory(artcl)
+    }
+
+    function handleSearch(event) {
+        setSearch(event.target.value)
     }
 }
 
