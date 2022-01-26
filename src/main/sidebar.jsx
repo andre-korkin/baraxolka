@@ -5,10 +5,10 @@ import Condition from './sidebar/condition'
 // import InCart from './sidebar/inCart'
 
 
-const Sidebar = ({ ...props }) => {
+const Sidebar = ({ condition, onSelect }) => {
     return (
         <div className="sidebar">
-            <Condition />
+            <Condition condition={condition} onSelect={onSelect} />
             {/* <Socket /> */}
             {/* <SidebarCart /> */}
             {/* <InCart /> */}

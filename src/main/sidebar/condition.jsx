@@ -1,19 +1,11 @@
 import React from 'react'
+import MySelect from './mySelect'
 
 
-const Condition = () => {
-    return (
-        <div className="condition">
-            <h3>Состояние</h3>
-            <ul>
-                <li className="active">Любое</li>
-                <li>Новое</li>
-                <li>Отличное</li>
-                <li>Хорошее</li>
-                <li>Среднее</li>
-            </ul>
-        </div>
-    )
+const Condition = ({ condition, onSelect }) => {
+    const variants = ['Любое', 'Новое', 'Отличное', 'Хорошее', 'Среднее']
+
+    return <MySelect title={'Состояние'} variants={variants} variant={condition} onSelect={onSelect} />
 }
 
 export default Condition

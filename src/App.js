@@ -13,6 +13,8 @@ function App() {
     const [search, setSearch] = useState('')
     const [isFavorites, setIsFavorites] = useState(false)
 
+    const [condition, setCondition] = useState('Любое')
+
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
     !localStorage.getItem('favorites') && localStorage.setItem('favorites', JSON.stringify([]))
 
@@ -22,7 +24,8 @@ function App() {
             <Categories category={category} onChange={handleChange} />
             <BeforeContent search={search} onSearch={handleSearch} isFavorites={isFavorites} onFavorites={handleFavorites} />
             {/* <Path /> */}
-            <Main category={category} search={search} isFavorites={isFavorites} />
+            <Main category={category} search={search} isFavorites={isFavorites}
+                condition={condition} onSelect={handleSelect} />
             <Pagination />
             <Footer />
         </div>
@@ -39,6 +42,16 @@ function App() {
 
     function handleFavorites() {
         setIsFavorites(!isFavorites)
+    }
+
+    function handleSelect(varSelect, variant) {
+        switch(varSelect) {
+            case 'Состояние':
+                setCondition(variant)
+                break
+            default:
+                break
+        }
     }
 }
 

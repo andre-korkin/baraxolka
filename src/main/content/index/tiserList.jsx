@@ -3,11 +3,13 @@ import goods from '../../../db/goods'
 import Tiser from './tiser'
 
 
-const TiserList =({ category, search, isFavorites }) => {
+const TiserList =({ category, search, isFavorites, condition }) => {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
 
-    let goodList = category ? goods.filter(good => good['Артикул'][0] === category) : goods
+    let goodList = goods.filter(good => good['Количество'] !== '0')
+
+    goodList = category ? goods.filter(good => good['Артикул'][0] === category) : goods
     
     goodList = search
         ? goodList.filter(good => (good['Название'] && good['Название'].toLowerCase().includes(search.toLowerCase()))
@@ -15,6 +17,8 @@ const TiserList =({ category, search, isFavorites }) => {
         : goodList
 
     goodList = isFavorites ? goodList.filter(good => favorites.includes(good['Артикул'])) : goodList
+
+    goodList = condition !== 'Любое' ? goodList.filter(good => good['Состояние'] === condition) : goodList
 
 
     return (
