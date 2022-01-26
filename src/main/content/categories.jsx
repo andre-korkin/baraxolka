@@ -11,8 +11,8 @@ const Categories = ({ category, onChange }) => {
         {artcl: '4', name: 'Накопители'},
         {artcl: '5', name: 'Бл. питания'},
         {artcl: '6', name: 'Кулеры'},
-        {artcl: '8', name: 'Комплекты'},
-        {artcl: '9', name: 'Сборки'}
+        {artcl: '7', name: 'Комплекты'},
+        {artcl: '8', name: 'Сборки'}
     ]
 
     return (

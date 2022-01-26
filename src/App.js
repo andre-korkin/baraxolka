@@ -14,6 +14,7 @@ function App() {
     const [isFavorites, setIsFavorites] = useState(false)
 
     const [condition, setCondition] = useState('Любое')
+    const [socket, setSocket] = useState('Все')
 
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
     !localStorage.getItem('favorites') && localStorage.setItem('favorites', JSON.stringify([]))
@@ -24,8 +25,8 @@ function App() {
             <Categories category={category} onChange={handleChange} />
             <BeforeContent search={search} onSearch={handleSearch} isFavorites={isFavorites} onFavorites={handleFavorites} />
             {/* <Path /> */}
-            <Main category={category} search={search} isFavorites={isFavorites}
-                condition={condition} onSelect={handleSelect} />
+            <Main category={category} search={search} isFavorites={isFavorites} onSelect={handleSelect}
+                condition={condition} socket={socket} />
             <Pagination />
             <Footer />
         </div>
@@ -48,6 +49,9 @@ function App() {
         switch(varSelect) {
             case 'Состояние':
                 setCondition(variant)
+                break
+            case 'Сокет':
+                setSocket(variant)
                 break
             default:
                 break

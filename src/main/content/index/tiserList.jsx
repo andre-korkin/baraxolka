@@ -9,7 +9,7 @@ const TiserList =({ category, search, isFavorites, condition }) => {
 
     let goodList = goods.filter(good => good['Количество'] !== '0')
 
-    goodList = category ? goods.filter(good => good['Артикул'][0] === category) : goods
+    goodList = category ? goodList.filter(good => good['Артикул'][0] === category) : goodList
     
     goodList = search
         ? goodList.filter(good => (good['Название'] && good['Название'].toLowerCase().includes(search.toLowerCase()))
