@@ -1,13 +1,15 @@
 import React from 'react'
-import Search from './common/search'
+import BtnFavorite from './btnFavorite'
+import Search from './search'
 
 
-const BeforeContent = ({ search, onChange }) => {
+const BeforeContent = ({ search, onSearch, isFavorites, onFavorites }) => {
     return (
         <div className="before-content">
             <div className="sorting">Сортировать по цене</div>
-            <div className="toggle-favorites">Показать избранное</div>
-            <Search search={search} onChange={onChange} />
+            {/* <div className="toggle-favorites">Показать избранное</div> */}
+            <BtnFavorite isFavorites={isFavorites} onFavorites={onFavorites} />
+            <Search search={search} onSearch={onSearch} />
         </div>
     )
 }

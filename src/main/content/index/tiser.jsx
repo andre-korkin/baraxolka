@@ -1,15 +1,20 @@
 import React from 'react'
+import ToCart from '../toCart'
+import ToFavorites from '../toFavorites'
 
 
-const Tiser =({ data }) => {
+const Tiser =({ data, favorites, onFavorites, cart, onCart }) => {
+    const isFavorite = favorites.includes(data['Артикул'])
+    const isCart = cart.includes(data['Артикул'])
+
     return (
         <div className='tiser'>
             <img src={data['Фото'] ? imgPrefix() + data['Фото'] : './img/no-image.png'} alt='' />
             <h2>{goodName()}</h2>
             <h3>{data['Цена'] + ' тг'}</h3>
             <div className='buttons'>
-                <div className='tocart'>В корзину</div>
-                <div className='tofavorites'>В избранное</div>
+                <ToCart artcl={data['Артикул']} isCart={isCart} onCart={onCart} />
+                <ToFavorites artcl={data['Артикул']} isFavorite={isFavorite} onFavorites={onFavorites} />
             </div>
         </div>
     )

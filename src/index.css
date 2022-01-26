@@ -140,6 +140,9 @@ h1 {
 .toggle-favorites:hover {
   background: rgba(165, 42, 42, 0.8);
 }
+.toggle-favorites.active {
+  background: rgba(165, 42, 42, 0.8);
+}
 
 .search {
   color: #666;
@@ -239,6 +242,10 @@ h1 {
   border: solid 1px steelblue;
 }
 .tiser .tocart:hover {
+  background: rgba(70, 130, 180, 0.9);
+  color: #fff;
+}
+.tiser .tocart.active {
   background: rgba(70, 130, 180, 0.9);
   color: #fff;
 }
