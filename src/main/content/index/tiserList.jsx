@@ -3,7 +3,7 @@ import goods from '../../../db/goods'
 import Tiser from './tiser'
 
 
-const TiserList =({ category, search, isFavorites, condition }) => {
+const TiserList =({ category, search, isFavorites, condition, socket }) => {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
 
@@ -19,6 +19,8 @@ const TiserList =({ category, search, isFavorites, condition }) => {
     goodList = isFavorites ? goodList.filter(good => favorites.includes(good['Артикул'])) : goodList
 
     goodList = condition !== 'Любое' ? goodList.filter(good => good['Состояние'] === condition) : goodList
+
+    goodList = socket !== 'Все' ? goodList.filter(good => isHasSocket(good)) : goodList
 
 
     return (
@@ -53,6 +55,24 @@ const TiserList =({ category, search, isFavorites, condition }) => {
         }
         localStorage.setItem('cart', JSON.stringify(newCart))
         setCart(newCart)
+    }
+
+    function isHasSocket(good) {
+        if(category !== '6') {
+            return good['Сокет'] === socket
+        }
+        else {
+            if(good['Сокет']) {
+                if(good['Сокет'].includes(',')) {
+                    let arrSockets = good['Сокет'].split(',')
+                    arrSockets = arrSockets.map(item => item.trim())
+                    return arrSockets.includes(socket)
+                }
+                else {
+                    return good['Сокет'] === socket
+                }
+            }
+        }
     }
 }
 

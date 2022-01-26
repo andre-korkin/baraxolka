@@ -299,14 +299,13 @@ h1 {
   padding: 20px;
   color: #666;
   text-align: center;
-  border: solid 1px #dedede;
+  border: solid 1px rgb(15, 94, 160);
   border-radius: 7px;
   background: #efefef;
   cursor: pointer;
   transition: 0.5s;
 }
 .sidebar > div:hover {
-  border: solid 1px #aaa;
   background: #fff;
 }
 

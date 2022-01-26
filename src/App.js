@@ -35,14 +35,24 @@ function App() {
 
     function handleChange(artcl) {
         setCategory(artcl)
+        setSearch('')
+        setIsFavorites(false)
+        setCondition('Любое')
+        setSocket('Все')
     }
 
     function handleSearch(event) {
         setSearch(event.target.value)
+        setIsFavorites(false)
+        setCondition('Любое')
+        setSocket('Все')
     }
 
     function handleFavorites() {
         setIsFavorites(!isFavorites)
+        setSearch('')
+        setCondition('Любое')
+        setSocket('Все')
     }
 
     function handleSelect(varSelect, variant) {
