@@ -18,6 +18,7 @@ function App() {
     const [socket, setSocket] = useState('Все')
     const [core, setCore] = useState('Все')
     const [cpuFrequency, setCPUFrequency] = useState('Все')
+    const [fsb, setFSB] = useState('Все')
 
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
     !localStorage.getItem('favorites') && localStorage.setItem('favorites', JSON.stringify([]))
@@ -30,7 +31,7 @@ function App() {
             {/* <Path /> */}
             <Main category={category} search={search} isFavorites={isFavorites} onSelect={handleSelect}
                 condition={condition} typeCooler={typeCooler} socket={socket} core={core}
-                cpuFrequency={cpuFrequency} />
+                cpuFrequency={cpuFrequency} fsbVar={fsb} />
             {/* <Pagination /> */}
             <Footer />
         </div>
@@ -81,6 +82,9 @@ function App() {
                 break
             case 'Частота':
                 setCPUFrequency(variant)
+                break
+            case 'Частота шины':
+                setFSB(variant)
                 break
             default:
                 break

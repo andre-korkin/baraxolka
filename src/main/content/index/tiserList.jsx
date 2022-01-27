@@ -3,7 +3,7 @@ import goods from '../../../db/goods'
 import Tiser from './tiser'
 
 
-const TiserList =({ category, search, isFavorites, condition, typeCooler, socket, core, cpuFrequency }) => {
+const TiserList =({ category, search, isFavorites, condition, typeCooler, socket, core, cpuFrequency, fsbVar }) => {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
 
@@ -36,6 +36,7 @@ const TiserList =({ category, search, isFavorites, condition, typeCooler, socket
     if(category === '0') {
         goodList = core !== 'Все' ? goodList.filter(good => good['Ядер/потоков'].split('/')[0] === core) : goodList
         goodList = cpuFrequency !== 'Все' ? goodList.filter(good => isHasFrequency(good)) : goodList
+        goodList = fsbVar !== 'Все' ? goodList.filter(good => isHasFSB(good)) : goodList
     }
 
 
@@ -105,6 +106,15 @@ const TiserList =({ category, search, isFavorites, condition, typeCooler, socket
                 return freq >= 3
             default:
                 break
+        }
+    }
+
+    function isHasFSB(good) {
+        if(good['Частота системной шины'].includes('/')) {
+            return good['Частота системной шины'].split('/').includes(fsbVar)
+        }
+        else {
+            return good['Частота системной шины'] === fsbVar
         }
     }
 }
