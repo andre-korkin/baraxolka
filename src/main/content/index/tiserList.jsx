@@ -3,7 +3,7 @@ import goods from '../../../db/goods'
 import Tiser from './tiser'
 
 
-const TiserList =({ category, search, isFavorites, condition, typeCooler, socket }) => {
+const TiserList =({ category, search, isFavorites, condition, typeCooler, socket, cpuFrequency }) => {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
 
@@ -31,6 +31,10 @@ const TiserList =({ category, search, isFavorites, condition, typeCooler, socket
 
     if(['0', '1', '6', '7', '8'].includes(category)) {
         goodList = socket !== 'Все' ? goodList.filter(good => isHasSocket(good)) : goodList
+    }
+
+    if(category === '0') {
+        goodList = cpuFrequency !== 'Все' ? goodList.filter(good => isHasFrequency(good)) : goodList
     }
 
 
@@ -83,6 +87,24 @@ const TiserList =({ category, search, isFavorites, condition, typeCooler, socket
                     return good['Сокет'] === socket
                 }
             }
+        }
+    }
+
+    function isHasFrequency(good) {
+        const freq = Number(good['Частота ядра'])
+        console.log(cpuFrequency)
+
+        switch(cpuFrequency) {
+            case 'Ниже 2 ГГц':
+                return freq < 2
+            case '2-2.4 ГГц':
+                return freq >= 2 && freq < 2.5
+            case '2.5-2.9 ГГЦ':
+                return freq >= 2.5 && freq < 3
+            case 'От 3 ГГЦ и выше':
+                return freq >= 3
+            default:
+                break
         }
     }
 }
