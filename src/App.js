@@ -16,6 +16,7 @@ function App() {
     const [condition, setCondition] = useState('Любое')
     const [typeCooler, setTypeCooler] = useState('Все')
     const [socket, setSocket] = useState('Все')
+    const [core, setCore] = useState('Все')
     const [cpuFrequency, setCPUFrequency] = useState('Все')
 
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
@@ -28,7 +29,8 @@ function App() {
             <BeforeContent search={search} onSearch={handleSearch} isFavorites={isFavorites} onFavorites={handleFavorites} />
             {/* <Path /> */}
             <Main category={category} search={search} isFavorites={isFavorites} onSelect={handleSelect}
-                condition={condition} typeCooler={typeCooler} socket={socket} cpuFrequency={cpuFrequency} />
+                condition={condition} typeCooler={typeCooler} socket={socket} core={core}
+                cpuFrequency={cpuFrequency} />
             {/* <Pagination /> */}
             <Footer />
         </div>
@@ -73,6 +75,9 @@ function App() {
                 break
             case 'Сокет':
                 setSocket(variant)
+                break
+            case 'Количество ядер':
+                setCore(variant)
                 break
             case 'Частота':
                 setCPUFrequency(variant)
