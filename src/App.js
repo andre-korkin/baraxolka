@@ -14,6 +14,7 @@ function App() {
     const [isFavorites, setIsFavorites] = useState(false)
 
     const [condition, setCondition] = useState('Любое')
+    const [typeCooler, setTypeCooler] = useState('Все')
     const [socket, setSocket] = useState('Все')
 
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
@@ -26,7 +27,7 @@ function App() {
             <BeforeContent search={search} onSearch={handleSearch} isFavorites={isFavorites} onFavorites={handleFavorites} />
             {/* <Path /> */}
             <Main category={category} search={search} isFavorites={isFavorites} onSelect={handleSelect}
-                condition={condition} socket={socket} />
+                condition={condition} typeCooler={typeCooler} socket={socket} />
             <Pagination />
             <Footer />
         </div>
@@ -43,6 +44,7 @@ function App() {
 
     function handleSearch(event) {
         setSearch(event.target.value)
+        setCategory('')
         setIsFavorites(false)
         setCondition('Любое')
         setSocket('Все')
@@ -50,6 +52,7 @@ function App() {
 
     function handleFavorites() {
         setIsFavorites(!isFavorites)
+        setCategory('')
         setSearch('')
         setCondition('Любое')
         setSocket('Все')
@@ -59,6 +62,10 @@ function App() {
         switch(varSelect) {
             case 'Состояние':
                 setCondition(variant)
+                break
+            case 'Тип кулеров':
+                variant !== 'Процессорный' && setSocket('Все')
+                setTypeCooler(variant)
                 break
             case 'Сокет':
                 setSocket(variant)

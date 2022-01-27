@@ -3,7 +3,7 @@ import goods from '../../../db/goods'
 import Tiser from './tiser'
 
 
-const TiserList =({ category, search, isFavorites, condition, socket }) => {
+const TiserList =({ category, search, isFavorites, condition, typeCooler, socket }) => {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
 
@@ -20,7 +20,18 @@ const TiserList =({ category, search, isFavorites, condition, socket }) => {
 
     goodList = condition !== 'Любое' ? goodList.filter(good => good['Состояние'] === condition) : goodList
 
-    goodList = socket !== 'Все' ? goodList.filter(good => isHasSocket(good)) : goodList
+    if(category === '6') {
+        if(typeCooler === 'Процессорный') {
+            goodList = goodList.filter(good => good['Сокет'])
+        }
+        else if(typeCooler === 'Корпусной') {
+            goodList = goodList.filter(good => !good['Сокет'])
+        }
+    }
+
+    if(['0', '1', '6', '7', '8'].includes(category)) {
+        goodList = socket !== 'Все' ? goodList.filter(good => isHasSocket(good)) : goodList
+    }
 
 
     return (
