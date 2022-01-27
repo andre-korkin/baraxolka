@@ -4,12 +4,13 @@ import Socket from './sidebar/index/socket'
 import TypeCooler from './sidebar/index/typeCooler'
 import Frequency from './sidebar/index/cpu/frequency'
 import Cores from './sidebar/index/cpu/cores'
-import FSB from './sidebar/index/cpu/fsb'
+import FSB from './sidebar/index/fsb'
+import TDP from './sidebar/index/tdp'
 // import SidebarCart from './sidebar/sidebarCart'
 // import InCart from './sidebar/inCart'
 
 
-const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, fsbVar, onSelect }) => {
+const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, fsbVar, tdp, onSelect }) => {
     const socketCategories = ['0', '1', '7', '8']
 
     return (
@@ -20,6 +21,7 @@ const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, 
             {category === '0' && <Cores core={core} onSelect={onSelect} />}
             {category === '0' && <Frequency frequency={cpuFrequency} onSelect={onSelect} />}
             {category === '0' && <FSB fsbVar={fsbVar} onSelect={onSelect} />}
+            {category === '0' && <TDP tdp={tdp} onSelect={onSelect} />}
             {/* <SidebarCart /> */}
             {/* <InCart /> */}
         </div>

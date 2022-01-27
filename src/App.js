@@ -19,6 +19,7 @@ function App() {
     const [core, setCore] = useState('Все')
     const [cpuFrequency, setCPUFrequency] = useState('Все')
     const [fsb, setFSB] = useState('Все')
+    const [tdp, setTDP] = useState('Все')
 
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
     !localStorage.getItem('favorites') && localStorage.setItem('favorites', JSON.stringify([]))
@@ -31,7 +32,7 @@ function App() {
             {/* <Path /> */}
             <Main category={category} search={search} isFavorites={isFavorites} onSelect={handleSelect}
                 condition={condition} typeCooler={typeCooler} socket={socket} core={core}
-                cpuFrequency={cpuFrequency} fsbVar={fsb} />
+                cpuFrequency={cpuFrequency} fsbVar={fsb} tdp={tdp} />
             {/* <Pagination /> */}
             <Footer />
         </div>
@@ -45,6 +46,8 @@ function App() {
         setCondition('Любое')
         setSocket('Все')
         setCPUFrequency('Все')
+        setFSB('Все')
+        setTDP('Все')
     }
 
     function handleSearch(event) {
@@ -54,6 +57,8 @@ function App() {
         setCondition('Любое')
         setSocket('Все')
         setCPUFrequency('Все')
+        setFSB('Все')
+        setTDP('Все')
     }
 
     function handleFavorites() {
@@ -63,6 +68,8 @@ function App() {
         setCondition('Любое')
         setSocket('Все')
         setCPUFrequency('Все')
+        setFSB('Все')
+        setTDP('Все')
     }
 
     function handleSelect(varSelect, variant) {
@@ -85,6 +92,9 @@ function App() {
                 break
             case 'Частота шины':
                 setFSB(variant)
+                break
+            case 'Мощность тепловыделения':
+                setTDP(variant)
                 break
             default:
                 break
