@@ -3,7 +3,7 @@ import goods from '../../../db/goods'
 import Tiser from './tiser'
 
 
-const TiserList =({ category, search, isFavorites, condition, typeCooler, socket, core, cpuFrequency, fsbVar, tdp }) => {
+const TiserList =({ category, search, isFavorites, condition, typeCooler, socket, core, cpuFrequency, fsbVar, tdp, ramType }) => {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
 
@@ -41,6 +41,10 @@ const TiserList =({ category, search, isFavorites, condition, typeCooler, socket
 
     if(['0', '1'].includes(category)) {
         goodList = fsbVar !== 'Все' ? goodList.filter(good => isHasFSB(good)) : goodList
+    }
+
+    if(category === '1') {
+        goodList = ramType !== 'Все' ? goodList.filter(good => good['Тип ОЗУ'] === ramType) : goodList
     }
 
 

@@ -20,6 +20,7 @@ function App() {
     const [cpuFrequency, setCPUFrequency] = useState('Все')
     const [fsb, setFSB] = useState('Все')
     const [tdp, setTDP] = useState('Все')
+    const [ramType, setRAMType] = useState('Все')
 
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
     !localStorage.getItem('favorites') && localStorage.setItem('favorites', JSON.stringify([]))
@@ -32,7 +33,7 @@ function App() {
             {/* <Path /> */}
             <Main category={category} search={search} isFavorites={isFavorites} onSelect={handleSelect}
                 condition={condition} typeCooler={typeCooler} socket={socket} core={core}
-                cpuFrequency={cpuFrequency} fsbVar={fsb} tdp={tdp} />
+                cpuFrequency={cpuFrequency} fsbVar={fsb} tdp={tdp} ramType={ramType} />
             {/* <Pagination /> */}
             <Footer />
         </div>
@@ -95,6 +96,9 @@ function App() {
                 break
             case 'Мощность тепловыделения':
                 setTDP(variant)
+                break
+            case 'Тип ОЗУ':
+                setRAMType(variant)
                 break
             default:
                 break
