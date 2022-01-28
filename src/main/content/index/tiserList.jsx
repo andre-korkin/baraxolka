@@ -36,8 +36,11 @@ const TiserList =({ category, search, isFavorites, condition, typeCooler, socket
     if(category === '0') {
         goodList = core !== 'Все' ? goodList.filter(good => good['Ядер/потоков'].split('/')[0] === core) : goodList
         goodList = cpuFrequency !== 'Все' ? goodList.filter(good => isHasFrequency(good)) : goodList
-        goodList = fsbVar !== 'Все' ? goodList.filter(good => isHasFSB(good)) : goodList
         goodList = tdp !== 'Все' ? goodList.filter(good => Number(good['Мощность тепловыделения']) === tdp) : goodList
+    }
+
+    if(['0', '1'].includes(category)) {
+        goodList = fsbVar !== 'Все' ? goodList.filter(good => isHasFSB(good)) : goodList
     }
 
 

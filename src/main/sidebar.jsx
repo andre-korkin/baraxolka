@@ -20,7 +20,7 @@ const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, 
             {(socketCategories.includes(category) || typeCooler === 'Процессорный') && <Socket category={category} socket={socket} onSelect={onSelect} />}
             {category === '0' && <Cores core={core} onSelect={onSelect} />}
             {category === '0' && <Frequency frequency={cpuFrequency} onSelect={onSelect} />}
-            {category === '0' && <FSB fsbVar={fsbVar} onSelect={onSelect} />}
+            {['0', '1'].includes(category) && <FSB category={category} fsbVar={fsbVar} onSelect={onSelect} />}
             {category === '0' && <TDP tdp={tdp} onSelect={onSelect} />}
             {/* <SidebarCart /> */}
             {/* <InCart /> */}

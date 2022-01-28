@@ -3,9 +3,9 @@ import MySelect from './mySelect'
 import goods from '../../../db/goods'
 
 
-const FSB = ({ fsbVar, onSelect }) => {
-    const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === '0')
-    const fsb = ['33', '66', '100', '133', '166', '200', '333', '400', '533', '667', '800', '1066', '1333', '1600', '2000', '2133', '2400', '2666', '3200']
+const FSB = ({ category, fsbVar, onSelect }) => {
+    const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
+    const fsb = ['33', '66', '100', '133', '166', '200', '333', '400', '533', '667', '800', '1066', '1333', '1600', '2000', '2133', '2400', '2666', '3200', 'Адаптивная']
 
     let arr = []  // список имеющихся fsb
     goodList.forEach(good => {
