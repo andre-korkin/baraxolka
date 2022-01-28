@@ -21,6 +21,7 @@ function App() {
     const [fsb, setFSB] = useState('Все')
     const [tdp, setTDP] = useState('Все')
     const [ramType, setRAMType] = useState('Все')
+    const [ramSize, setRAMSize] = useState('Все')
 
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
     !localStorage.getItem('favorites') && localStorage.setItem('favorites', JSON.stringify([]))
@@ -33,7 +34,7 @@ function App() {
             {/* <Path /> */}
             <Main category={category} search={search} isFavorites={isFavorites} onSelect={handleSelect}
                 condition={condition} typeCooler={typeCooler} socket={socket} core={core}
-                cpuFrequency={cpuFrequency} fsbVar={fsb} tdp={tdp} ramType={ramType} />
+                cpuFrequency={cpuFrequency} fsbVar={fsb} tdp={tdp} ramType={ramType} ramSize={ramSize} />
             {/* <Pagination /> */}
             <Footer />
         </div>
@@ -99,6 +100,9 @@ function App() {
                 break
             case 'Тип ОЗУ':
                 setRAMType(variant)
+                break
+            case 'Объем ОЗУ':
+                setRAMSize(variant)
                 break
             default:
                 break

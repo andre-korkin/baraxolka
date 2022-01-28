@@ -7,11 +7,12 @@ import Cores from './sidebar/index/cpu/cores'
 import FSB from './sidebar/index/fsb'
 import TDP from './sidebar/index/tdp'
 import RAMType from './sidebar/index/ramType'
+import RAMSize from './sidebar/index/ramSize'
 // import SidebarCart from './sidebar/sidebarCart'
 // import InCart from './sidebar/inCart'
 
 
-const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, fsbVar, tdp, ramType, onSelect }) => {
+const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, fsbVar, tdp, ramType, ramSize, onSelect }) => {
     const socketCategories = ['0', '1', '7', '8']
 
     return (
@@ -24,6 +25,7 @@ const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, 
             {['0', '1'].includes(category) && <FSB category={category} fsbVar={fsbVar} onSelect={onSelect} />}
             {category === '0' && <TDP tdp={tdp} onSelect={onSelect} />}
             {category === '1' && <RAMType category={category} ramType={ramType} onSelect={onSelect} />}
+            {category === '1' && <RAMSize category={category} ramSize={ramSize} onSelect={onSelect} />}
             {/* <SidebarCart /> */}
             {/* <InCart /> */}
         </div>

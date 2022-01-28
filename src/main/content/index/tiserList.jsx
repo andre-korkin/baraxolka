@@ -3,7 +3,7 @@ import goods from '../../../db/goods'
 import Tiser from './tiser'
 
 
-const TiserList =({ category, search, isFavorites, condition, typeCooler, socket, core, cpuFrequency, fsbVar, tdp, ramType }) => {
+const TiserList =({ category, search, isFavorites, condition, typeCooler, socket, core, cpuFrequency, fsbVar, tdp, ramType, ramSize }) => {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
 
@@ -45,6 +45,7 @@ const TiserList =({ category, search, isFavorites, condition, typeCooler, socket
 
     if(category === '1') {
         goodList = ramType !== 'Все' ? goodList.filter(good => good['Тип ОЗУ'] === ramType) : goodList
+        goodList = ramSize !== 'Все' ? goodList.filter(good => isHasRAMSize(good)) : goodList
     }
 
 
@@ -123,6 +124,17 @@ const TiserList =({ category, search, isFavorites, condition, typeCooler, socket
         }
         else {
             return good['Частота системной шины'] === fsbVar
+        }
+    }
+
+
+    function isHasRAMSize(good) {
+        if(good['Объем ОЗУ'].includes('x')) {
+            const size = good['Объем ОЗУ'][0] + ' x ' + good['Объем ОЗУ'][2] + ' ГБ'
+            return size === ramSize
+        }
+        else {
+            return good['Объем ОЗУ'] === ramSize
         }
     }
 }
