@@ -22,6 +22,8 @@ function App() {
     const [tdp, setTDP] = useState('Все')
     const [ramType, setRAMType] = useState('Все')
     const [ramSize, setRAMSize] = useState('Все')
+    const [ramFraq, setRAMFraq] = useState('Все')
+    const [videoInterface, setVideoInterface] = useState('Все')
 
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
     !localStorage.getItem('favorites') && localStorage.setItem('favorites', JSON.stringify([]))
@@ -34,7 +36,8 @@ function App() {
             {/* <Path /> */}
             <Main category={category} search={search} isFavorites={isFavorites} onSelect={handleSelect}
                 condition={condition} typeCooler={typeCooler} socket={socket} core={core}
-                cpuFrequency={cpuFrequency} fsbVar={fsb} tdp={tdp} ramType={ramType} ramSize={ramSize} />
+                cpuFrequency={cpuFrequency} fsbVar={fsb} tdp={tdp} ramType={ramType} ramSize={ramSize}
+                ramFraq={ramFraq} videoInterface={videoInterface} />
             {/* <Pagination /> */}
             <Footer />
         </div>
@@ -50,6 +53,10 @@ function App() {
         setCPUFrequency('Все')
         setFSB('Все')
         setTDP('Все')
+        setRAMType('Все')
+        setRAMSize('Все')
+        setRAMFraq('Все')
+        setVideoInterface('Все')
     }
 
     function handleSearch(event) {
@@ -61,6 +68,10 @@ function App() {
         setCPUFrequency('Все')
         setFSB('Все')
         setTDP('Все')
+        setRAMType('Все')
+        setRAMSize('Все')
+        setRAMFraq('Все')
+        setVideoInterface('Все')
     }
 
     function handleFavorites() {
@@ -72,6 +83,10 @@ function App() {
         setCPUFrequency('Все')
         setFSB('Все')
         setTDP('Все')
+        setRAMType('Все')
+        setRAMSize('Все')
+        setRAMFraq('Все')
+        setVideoInterface('Все')
     }
 
     function handleSelect(varSelect, variant) {
@@ -103,6 +118,12 @@ function App() {
                 break
             case 'Объем ОЗУ':
                 setRAMSize(variant)
+                break
+            case 'Частота ОЗУ':
+                setRAMFraq(variant)
+                break
+            case 'Тип видео-интерфейса':
+                setVideoInterface(variant)
                 break
             default:
                 break

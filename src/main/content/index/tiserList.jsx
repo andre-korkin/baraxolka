@@ -3,7 +3,7 @@ import goods from '../../../db/goods'
 import Tiser from './tiser'
 
 
-const TiserList =({ category, search, isFavorites, condition, typeCooler, socket, core, cpuFrequency, fsbVar, tdp, ramType, ramSize }) => {
+const TiserList =({ category, search, isFavorites, condition, typeCooler, socket, core, cpuFrequency, fsbVar, tdp, ramType, ramSize, ramFraq, videoInterface }) => {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
 
@@ -46,6 +46,8 @@ const TiserList =({ category, search, isFavorites, condition, typeCooler, socket
     if(category === '1') {
         goodList = ramType !== 'Все' ? goodList.filter(good => good['Тип ОЗУ'] === ramType) : goodList
         goodList = ramSize !== 'Все' ? goodList.filter(good => isHasRAMSize(good)) : goodList
+        goodList = ramFraq !== 'Все' ? goodList.filter(good => isHasRAMFraq(good)) : goodList
+        goodList = videoInterface !== 'Все' ? goodList.filter(good => good['Тип видео-интерфейса'] === videoInterface) : goodList
     }
 
 
@@ -135,6 +137,15 @@ const TiserList =({ category, search, isFavorites, condition, typeCooler, socket
         }
         else {
             return good['Объем ОЗУ'] === ramSize
+        }
+    }
+
+    function isHasRAMFraq(good) {
+        if(good['Частота ОЗУ'].includes('/')) {
+            return good['Частота ОЗУ'].split('/').includes(ramFraq)
+        }
+        else {
+            return good['Частота ОЗУ'] === ramFraq
         }
     }
 }
