@@ -3,7 +3,7 @@ import goods from '../../../db/goods'
 import Tiser from './tiser'
 
 
-const TiserList =({ category, search, isFavorites, condition, typeCooler, socket, core, cpuFrequency, fsbVar, tdp, ramType, ramSize, ramFraq, videoInterface }) => {
+const TiserList =({ category, search, isFavorites, condition, typeCooler, socket, core, cpuFrequency, fsbVar, tdp, ramType, ramSize, ramFraq, videoInterface, hddInterface }) => {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
 
@@ -48,6 +48,7 @@ const TiserList =({ category, search, isFavorites, condition, typeCooler, socket
         goodList = ramSize !== 'Все' ? goodList.filter(good => isHasRAMSize(good)) : goodList
         goodList = ramFraq !== 'Все' ? goodList.filter(good => isHasRAMFraq(good)) : goodList
         goodList = videoInterface !== 'Все' ? goodList.filter(good => good['Тип видео-интерфейса'] === videoInterface) : goodList
+        goodList = hddInterface !== 'Все' ? goodList.filter(good => isHasHDDInterface(good)) : goodList
     }
 
 
@@ -146,6 +147,15 @@ const TiserList =({ category, search, isFavorites, condition, typeCooler, socket
         }
         else {
             return good['Частота ОЗУ'] === ramFraq
+        }
+    }
+
+    function isHasHDDInterface(good) {
+        if(good['Тип HDD-интерфейса'].includes('/')) {
+            return good['Тип HDD-интерфейса'].split('/').includes(hddInterface)
+        }
+        else {
+            return good['Тип HDD-интерфейса'] === hddInterface
         }
     }
 }

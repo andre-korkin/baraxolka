@@ -24,6 +24,7 @@ function App() {
     const [ramSize, setRAMSize] = useState('Все')
     const [ramFraq, setRAMFraq] = useState('Все')
     const [videoInterface, setVideoInterface] = useState('Все')
+    const [hddInterface, setHDDInterface] = useState('Все')
 
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
     !localStorage.getItem('favorites') && localStorage.setItem('favorites', JSON.stringify([]))
@@ -37,7 +38,7 @@ function App() {
             <Main category={category} search={search} isFavorites={isFavorites} onSelect={handleSelect}
                 condition={condition} typeCooler={typeCooler} socket={socket} core={core}
                 cpuFrequency={cpuFrequency} fsbVar={fsb} tdp={tdp} ramType={ramType} ramSize={ramSize}
-                ramFraq={ramFraq} videoInterface={videoInterface} />
+                ramFraq={ramFraq} videoInterface={videoInterface} hddInterface={hddInterface} />
             {/* <Pagination /> */}
             <Footer />
         </div>
@@ -57,6 +58,7 @@ function App() {
         setRAMSize('Все')
         setRAMFraq('Все')
         setVideoInterface('Все')
+        setHDDInterface('Все')
     }
 
     function handleSearch(event) {
@@ -72,6 +74,7 @@ function App() {
         setRAMSize('Все')
         setRAMFraq('Все')
         setVideoInterface('Все')
+        setHDDInterface('Все')
     }
 
     function handleFavorites() {
@@ -87,6 +90,7 @@ function App() {
         setRAMSize('Все')
         setRAMFraq('Все')
         setVideoInterface('Все')
+        setHDDInterface('Все')
     }
 
     function handleSelect(varSelect, variant) {
@@ -124,6 +128,9 @@ function App() {
                 break
             case 'Тип видео-интерфейса':
                 setVideoInterface(variant)
+                break
+            case 'Тип HDD-интерфейса':
+                setHDDInterface(variant)
                 break
             default:
                 break

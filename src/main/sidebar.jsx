@@ -10,11 +10,12 @@ import RAMType from './sidebar/index/ramType'
 import RAMSize from './sidebar/index/ramSize'
 import RAMFraq from './sidebar/index/ramFreq'
 import VideoInterface from './sidebar/index/videoInterface'
+import HDDInterface from './sidebar/index/hddInterface'
 // import SidebarCart from './sidebar/sidebarCart'
 // import InCart from './sidebar/inCart'
 
 
-const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, fsbVar, tdp, ramType, ramSize, ramFraq, videoInterface, onSelect }) => {
+const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, fsbVar, tdp, ramType, ramSize, ramFraq, videoInterface, hddInterface, onSelect }) => {
     const socketCategories = ['0', '1', '7', '8']
 
     return (
@@ -30,6 +31,7 @@ const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, 
             {category === '1' && <RAMSize category={category} ramSize={ramSize} onSelect={onSelect} />}
             {category === '1' && <RAMFraq category={category} ramFraq={ramFraq} onSelect={onSelect} />}
             {category === '1' && <VideoInterface category={category} videoInterface={videoInterface} onSelect={onSelect} />}
+            {category === '1' && <HDDInterface category={category} hddInterface={hddInterface} onSelect={onSelect} />}
             {/* <SidebarCart /> */}
             {/* <InCart /> */}
         </div>
