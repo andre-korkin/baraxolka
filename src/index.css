@@ -781,3 +781,7 @@ h1 {
   border: solid 1px #888;
   border-radius: 5px;
 }
+
+.not_found {
+  margin: 40px 0 0 30px;
+}

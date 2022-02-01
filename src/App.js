@@ -26,6 +26,7 @@ function App() {
     const [videoInterface, setVideoInterface] = useState('Все')
     const [hddInterface, setHDDInterface] = useState('Все')
     const [platform, setPlatform] = useState('Все')
+    const [videoBitrate, setVideoBitrate] = useState('Все')
 
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
     !localStorage.getItem('favorites') && localStorage.setItem('favorites', JSON.stringify([]))
@@ -40,7 +41,7 @@ function App() {
                 condition={condition} typeCooler={typeCooler} socket={socket} core={core}
                 cpuFrequency={cpuFrequency} fsbVar={fsb} tdp={tdp} ramType={ramType} ramSize={ramSize}
                 ramFraq={ramFraq} videoInterface={videoInterface} hddInterface={hddInterface}
-                platform={platform} />
+                platform={platform} videoBitrate={videoBitrate} />
             {/* <Pagination /> */}
             <Footer />
         </div>
@@ -62,6 +63,7 @@ function App() {
         setVideoInterface('Все')
         setHDDInterface('Все')
         setPlatform('Все')
+        setVideoBitrate('Все')
     }
 
     function handleSearch(event) {
@@ -79,6 +81,7 @@ function App() {
         setVideoInterface('Все')
         setHDDInterface('Все')
         setPlatform('Все')
+        setVideoBitrate('Все')
     }
 
     function handleFavorites() {
@@ -96,6 +99,7 @@ function App() {
         setVideoInterface('Все')
         setHDDInterface('Все')
         setPlatform('Все')
+        setVideoBitrate('Все')
     }
 
     function handleSelect(varSelect, variant) {
@@ -139,6 +143,9 @@ function App() {
                 break
             case 'Платформа':
                 setPlatform(variant)
+                break
+            case 'Разрядность шины':
+                setVideoBitrate(variant)
                 break
             default:
                 break

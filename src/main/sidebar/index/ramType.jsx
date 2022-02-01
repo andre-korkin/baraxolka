@@ -5,7 +5,7 @@ import goods from '../../../db/goods'
 
 const RAMType = ({ category, ramType, onSelect }) => {
     const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
-    const ram = ['DDR', 'DDR2', 'DDR3', 'DDR4']
+    const ram = ['DDR', 'DDR2', 'DDR3', 'DDR4', 'DDR5', 'GDDR5', 'GDDR6']
 
     let arr = []  // список имеющихся ram
     goodList.forEach(good => {
