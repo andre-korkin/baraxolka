@@ -3,7 +3,7 @@ import goods from '../../../db/goods'
 import Tiser from './tiser'
 
 
-const TiserList =({ category, search, isFavorites, condition, typeCooler, socket, core, cpuFrequency, fsbVar, tdp, ramType, ramSize, ramFraq, videoInterface, hddInterface }) => {
+const TiserList =({ category, search, isFavorites, condition, typeCooler, socket, core, cpuFrequency, fsbVar, tdp, ramType, ramSize, ramFraq, videoInterface, hddInterface, platform }) => {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
 
@@ -43,10 +43,17 @@ const TiserList =({ category, search, isFavorites, condition, typeCooler, socket
         goodList = fsbVar !== 'Все' ? goodList.filter(good => isHasFSB(good)) : goodList
     }
 
-    if(category === '1') {
+    if(category === '2') {
+        goodList = platform !== 'Все' ? goodList.filter(good => good['Платформа'] === platform) : goodList
+    }
+
+    if(['1', '2'].includes(category)) {
         goodList = ramType !== 'Все' ? goodList.filter(good => good['Тип ОЗУ'] === ramType) : goodList
         goodList = ramSize !== 'Все' ? goodList.filter(good => isHasRAMSize(good)) : goodList
         goodList = ramFraq !== 'Все' ? goodList.filter(good => isHasRAMFraq(good)) : goodList
+    }
+
+    if(category === '1') {
         goodList = videoInterface !== 'Все' ? goodList.filter(good => good['Тип видео-интерфейса'] === videoInterface) : goodList
         goodList = hddInterface !== 'Все' ? goodList.filter(good => isHasHDDInterface(good)) : goodList
     }

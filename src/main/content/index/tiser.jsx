@@ -60,7 +60,7 @@ const Tiser =({ data, favorites, onFavorites, cart, onCart }) => {
 
         switch(artcl) {
             case '2':
-                title = data['Тип'] + ' ' + data['Бренд'] + ' ' + data['Объем']
+                title = data['Тип ОЗУ'] + ' ' + data['Бренд'] + ' ' + data['Объем ОЗУ']
                 break
             case '4':
                 title = data['Тип накопителя'] + ' ' + data['Бренд'] + ' ' + data['Объем']
