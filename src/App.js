@@ -27,6 +27,8 @@ function App() {
     const [hddInterface, setHDDInterface] = useState('Все')
     const [platform, setPlatform] = useState('Все')
     const [videoBitrate, setVideoBitrate] = useState('Все')
+    const [hddType, setHDDType] = useState('Все')
+    const [hddSize, setHDDSize] = useState('Все')
 
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
     !localStorage.getItem('favorites') && localStorage.setItem('favorites', JSON.stringify([]))
@@ -41,7 +43,7 @@ function App() {
                 condition={condition} typeCooler={typeCooler} socket={socket} core={core}
                 cpuFrequency={cpuFrequency} fsbVar={fsb} tdp={tdp} ramType={ramType} ramSize={ramSize}
                 ramFraq={ramFraq} videoInterface={videoInterface} hddInterface={hddInterface}
-                platform={platform} videoBitrate={videoBitrate} />
+                platform={platform} videoBitrate={videoBitrate} hddType={hddType} hddSize={hddSize} />
             {/* <Pagination /> */}
             <Footer />
         </div>
@@ -64,6 +66,8 @@ function App() {
         setHDDInterface('Все')
         setPlatform('Все')
         setVideoBitrate('Все')
+        setHDDType('Все')
+        setHDDSize('Все')
     }
 
     function handleSearch(event) {
@@ -82,6 +86,8 @@ function App() {
         setHDDInterface('Все')
         setPlatform('Все')
         setVideoBitrate('Все')
+        setHDDType('Все')
+        setHDDSize('Все')
     }
 
     function handleFavorites() {
@@ -100,6 +106,8 @@ function App() {
         setHDDInterface('Все')
         setPlatform('Все')
         setVideoBitrate('Все')
+        setHDDType('Все')
+        setHDDSize('Все')
     }
 
     function handleSelect(varSelect, variant) {
@@ -146,6 +154,12 @@ function App() {
                 break
             case 'Разрядность шины':
                 setVideoBitrate(variant)
+                break
+            case 'Тип накопителя':
+                setHDDType(variant)
+                break
+            case 'Объем накопителя':
+                setHDDSize(variant)
                 break
             default:
                 break

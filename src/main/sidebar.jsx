@@ -13,11 +13,13 @@ import VideoInterface from './sidebar/index/videoInterface'
 import HDDInterface from './sidebar/index/hddInterface'
 import Platform from './sidebar/index/platform'
 import VideoBitrate from './sidebar/index/videoBitrate'
+import HDDType from './sidebar/index/hdd/hddType'
+import HDDSize from './sidebar/index/hdd/hddSize'
 // import SidebarCart from './sidebar/sidebarCart'
 // import InCart from './sidebar/inCart'
 
 
-const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, fsbVar, tdp, ramType, ramSize, ramFraq, videoInterface, hddInterface, platform, videoBitrate, onSelect }) => {
+const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, fsbVar, tdp, ramType, ramSize, ramFraq, videoInterface, hddInterface, platform, videoBitrate, hddType, hddSize, onSelect }) => {
     const socketCategories = ['0', '1', '7', '8']
 
     return (
@@ -29,14 +31,16 @@ const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, 
             {category === '0' && <Frequency frequency={cpuFrequency} onSelect={onSelect} />}
             {['0', '1'].includes(category) && <FSB category={category} fsbVar={fsbVar} onSelect={onSelect} />}
             {category === '0' && <TDP tdp={tdp} onSelect={onSelect} />}
-            {category === '2' && <Platform platform={platform} onSelect={onSelect} />}
+            {['2', '4'].includes(category) && <Platform category={category} platform={platform} onSelect={onSelect} />}
             {category === '3' && <VideoInterface category={category} videoInterface={videoInterface} onSelect={onSelect} />}
             {['1', '2', '3'].includes(category) && <RAMType category={category} ramType={ramType} onSelect={onSelect} />}
             {['1', '2', '3'].includes(category) && <RAMSize category={category} ramSize={ramSize} onSelect={onSelect} />}
             {['1', '2'].includes(category) && <RAMFraq category={category} ramFraq={ramFraq} onSelect={onSelect} />}
             {category === '1' && <VideoInterface category={category} videoInterface={videoInterface} onSelect={onSelect} />}
-            {category === '1' && <HDDInterface category={category} hddInterface={hddInterface} onSelect={onSelect} />}
+            {category === '4' && <HDDType hddType={hddType} onSelect={onSelect} />}
+            {['1', '4'].includes(category) && <HDDInterface category={category} hddInterface={hddInterface} onSelect={onSelect} />}
             {category === '3' && <VideoBitrate videoBitrate={videoBitrate} onSelect={onSelect} />}
+            {category === '4' && <HDDSize hddSize={hddSize} onSelect={onSelect} />}
             {/* <SidebarCart /> */}
             {/* <InCart /> */}
         </div>
