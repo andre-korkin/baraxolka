@@ -3,7 +3,7 @@ import goods from '../../../db/goods'
 import Tiser from './tiser'
 
 
-const TiserList =({ category, search, isFavorites, condition, typeCooler, socket, core, cpuFrequency, fsbVar, tdp, ramType, ramSize, ramFraq, videoInterface, hddInterface, platform, videoBitrate, hddType, hddSize }) => {
+const TiserList =({ category, search, isFavorites, condition, typeCooler, socket, core, cpuFrequency, fsbVar, tdp, ramType, ramSize, ramFraq, videoInterface, hddInterface, platform, videoBitrate, hddType, hddSize, bpPower }) => {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
 
@@ -71,6 +71,10 @@ const TiserList =({ category, search, isFavorites, condition, typeCooler, socket
     if(category === '4') {
         goodList = hddType !== 'Все' ? goodList.filter(good => good['Тип накопителя'] === hddType) : goodList
         goodList = hddSize !== 'Все' ? goodList.filter(good => good['Объем'] === hddSize) : goodList
+    }
+
+    if(category === '5') {
+        goodList = bpPower !== 'Все' ? goodList.filter(good => good['Мощность'] === bpPower) : goodList
     }
 
 

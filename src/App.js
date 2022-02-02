@@ -29,6 +29,7 @@ function App() {
     const [videoBitrate, setVideoBitrate] = useState('Все')
     const [hddType, setHDDType] = useState('Все')
     const [hddSize, setHDDSize] = useState('Все')
+    const [bpPower, setBPPower] = useState('Все')
 
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
     !localStorage.getItem('favorites') && localStorage.setItem('favorites', JSON.stringify([]))
@@ -43,7 +44,8 @@ function App() {
                 condition={condition} typeCooler={typeCooler} socket={socket} core={core}
                 cpuFrequency={cpuFrequency} fsbVar={fsb} tdp={tdp} ramType={ramType} ramSize={ramSize}
                 ramFraq={ramFraq} videoInterface={videoInterface} hddInterface={hddInterface}
-                platform={platform} videoBitrate={videoBitrate} hddType={hddType} hddSize={hddSize} />
+                platform={platform} videoBitrate={videoBitrate} hddType={hddType} hddSize={hddSize}
+                bpPower={bpPower} />
             {/* <Pagination /> */}
             <Footer />
         </div>
@@ -68,6 +70,7 @@ function App() {
         setVideoBitrate('Все')
         setHDDType('Все')
         setHDDSize('Все')
+        setBPPower('Все')
     }
 
     function handleSearch(event) {
@@ -88,6 +91,7 @@ function App() {
         setVideoBitrate('Все')
         setHDDType('Все')
         setHDDSize('Все')
+        setBPPower('Все')
     }
 
     function handleFavorites() {
@@ -108,6 +112,7 @@ function App() {
         setVideoBitrate('Все')
         setHDDType('Все')
         setHDDSize('Все')
+        setBPPower('Все')
     }
 
     function handleSelect(varSelect, variant) {
@@ -160,6 +165,9 @@ function App() {
                 break
             case 'Объем накопителя':
                 setHDDSize(variant)
+                break
+            case 'Мощность':
+                setBPPower(variant)
                 break
             default:
                 break

@@ -15,11 +15,12 @@ import Platform from './sidebar/index/platform'
 import VideoBitrate from './sidebar/index/videoBitrate'
 import HDDType from './sidebar/index/hdd/hddType'
 import HDDSize from './sidebar/index/hdd/hddSize'
+import BPPower from './sidebar/index/bpPower'
 // import SidebarCart from './sidebar/sidebarCart'
 // import InCart from './sidebar/inCart'
 
 
-const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, fsbVar, tdp, ramType, ramSize, ramFraq, videoInterface, hddInterface, platform, videoBitrate, hddType, hddSize, onSelect }) => {
+const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, fsbVar, tdp, ramType, ramSize, ramFraq, videoInterface, hddInterface, platform, videoBitrate, hddType, hddSize, bpPower, onSelect }) => {
     const socketCategories = ['0', '1', '7', '8']
 
     return (
@@ -41,6 +42,7 @@ const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, 
             {['1', '4'].includes(category) && <HDDInterface category={category} hddInterface={hddInterface} onSelect={onSelect} />}
             {category === '3' && <VideoBitrate videoBitrate={videoBitrate} onSelect={onSelect} />}
             {category === '4' && <HDDSize hddSize={hddSize} onSelect={onSelect} />}
+            {category === '5' && <BPPower bpPower={bpPower} onSelect={onSelect} />}
             {/* <SidebarCart /> */}
             {/* <InCart /> */}
         </div>
