@@ -2,10 +2,10 @@ import React from 'react'
 import MySelect from './mySelect'
 
 
-const Condition = ({ condition, onSelect }) => {
-    const variants = ['Любое', 'Новое', 'Отличное', 'Хорошее', 'Среднее']
+const Condition = ({ filters, onSelect }) => {
+    const variants = ['Все', 'Новое', 'Отличное', 'Хорошее', 'Среднее']
 
-    return <MySelect title={'Состояние'} variants={variants} variant={condition} onSelect={onSelect} />
+    return <MySelect filter={'condition'} filterObject={filters.condition} variants={variants} onSelect={onSelect} />
 }
 
 export default Condition

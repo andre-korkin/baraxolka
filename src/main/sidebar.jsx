@@ -20,12 +20,29 @@ import BPPower from './sidebar/index/bpPower'
 // import InCart from './sidebar/inCart'
 
 
-const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, fsbVar, tdp, ramType, ramSize, ramFraq, videoInterface, hddInterface, platform, videoBitrate, hddType, hddSize, bpPower, onSelect }) => {
-    const socketCategories = ['0', '1', '7', '8']
-
+const Sidebar = ({ category, filters, onSelect }) => {
     return (
         <div className="sidebar">
-            <Condition condition={condition} onSelect={onSelect} />
+            <Condition filters={filters} onSelect={onSelect} />
+            {category === '6' && <TypeCooler filters={filters} onSelect={onSelect} />}
+            {(['0', '1', '7', '8'].includes(category) || filters.typeCooler.value === 'Процессорный')
+                && <Socket category={category} filters={filters} onSelect={onSelect} />}
+            {category === '0' && <Cores filters={filters} onSelect={onSelect} />}
+            {category === '0' && <Frequency filters={filters} onSelect={onSelect} />}
+            {['0', '1'].includes(category) && <FSB category={category} filters={filters} onSelect={onSelect} />}
+            {category === '0' && <TDP filters={filters} onSelect={onSelect} />}
+            {['2', '4'].includes(category) && <Platform category={category} filters={filters} onSelect={onSelect} />}
+            {category === '3' && <VideoInterface category={category} filters={filters} onSelect={onSelect} />}
+            {['1', '2', '3'].includes(category) && <RAMType category={category} filters={filters} onSelect={onSelect} />}
+            {['1', '2', '3'].includes(category) && <RAMSize category={category} filters={filters} onSelect={onSelect} />}
+            {['1', '2'].includes(category) && <RAMFraq category={category} filters={filters} onSelect={onSelect} />}
+            {category === '1' && <VideoInterface category={category} filters={filters} onSelect={onSelect} />}
+            {category === '4' && <HDDType filters={filters} onSelect={onSelect} />}
+            {['1', '4'].includes(category) && <HDDInterface category={category} filters={filters} onSelect={onSelect} />}
+            {category === '3' && <VideoBitrate filters={filters} onSelect={onSelect} />}
+            {category === '4' && <HDDSize filters={filters} onSelect={onSelect} />}
+            {category === '5' && <BPPower filters={filters} onSelect={onSelect} />}
+            {/* <Condition condition={condition} onSelect={onSelect} />
             {category === '6' && <TypeCooler type={typeCooler} onSelect={onSelect} />}
             {(socketCategories.includes(category) || typeCooler === 'Процессорный') && <Socket category={category} socket={socket} onSelect={onSelect} />}
             {category === '0' && <Cores core={core} onSelect={onSelect} />}
@@ -42,7 +59,7 @@ const Sidebar = ({ category, condition, typeCooler, socket, cpuFrequency, core, 
             {['1', '4'].includes(category) && <HDDInterface category={category} hddInterface={hddInterface} onSelect={onSelect} />}
             {category === '3' && <VideoBitrate videoBitrate={videoBitrate} onSelect={onSelect} />}
             {category === '4' && <HDDSize hddSize={hddSize} onSelect={onSelect} />}
-            {category === '5' && <BPPower bpPower={bpPower} onSelect={onSelect} />}
+            {category === '5' && <BPPower bpPower={bpPower} onSelect={onSelect} />} */}
             {/* <SidebarCart /> */}
             {/* <InCart /> */}
         </div>

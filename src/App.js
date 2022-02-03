@@ -13,23 +13,27 @@ function App() {
     const [search, setSearch] = useState('')
     const [isFavorites, setIsFavorites] = useState(false)
 
-    const [condition, setCondition] = useState('Любое')
-    const [typeCooler, setTypeCooler] = useState('Все')
-    const [socket, setSocket] = useState('Все')
-    const [core, setCore] = useState('Все')
-    const [cpuFrequency, setCPUFrequency] = useState('Все')
-    const [fsb, setFSB] = useState('Все')
-    const [tdp, setTDP] = useState('Все')
-    const [ramType, setRAMType] = useState('Все')
-    const [ramSize, setRAMSize] = useState('Все')
-    const [ramFraq, setRAMFraq] = useState('Все')
-    const [videoInterface, setVideoInterface] = useState('Все')
-    const [hddInterface, setHDDInterface] = useState('Все')
-    const [platform, setPlatform] = useState('Все')
-    const [videoBitrate, setVideoBitrate] = useState('Все')
-    const [hddType, setHDDType] = useState('Все')
-    const [hddSize, setHDDSize] = useState('Все')
-    const [bpPower, setBPPower] = useState('Все')
+    const dataFilters = {
+        condition: {name: 'Состояние', value: 'Все'},
+        typeCooler: {name: 'Тип кулеров', value: 'Все'},
+        socket: {name: 'Сокет', value: 'Все'},
+        core: {name: 'Количество ядер', value: 'Все'},
+        cpuFrequency: {name: 'Частота', value: 'Все'},
+        fsb: {name: 'Частота шины', value: 'Все'},
+        tdp: {name: 'Мощность тепловыделения', value: 'Все'},
+        ramType: {name: 'Тип ОЗУ', value: 'Все'},
+        ramSize: {name: 'Объем ОЗУ', value: 'Все'},
+        ramFraq: {name: 'Частота ОЗУ', value: 'Все'},
+        videoInterface: {name: 'Тип видео-интерфейса', value: 'Все'},
+        hddInterface: {name: 'Тип HDD-интерфейса', value: 'Все'},
+        platform: {name: 'Платформа', value: 'Все'},
+        videoBitrate: {name: 'Разрядность шины', value: 'Все'},
+        hddType: {name: 'Тип накопителя', value: 'Все'},
+        hddSize: {name: 'Объем накопителя', value: 'Все'},
+        bpPower: {name: 'Мощность', value: 'Все'}
+    }
+
+    const [filters, setFilters] = useState(dataFilters)
 
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
     !localStorage.getItem('favorites') && localStorage.setItem('favorites', JSON.stringify([]))
@@ -40,12 +44,7 @@ function App() {
             <Categories category={category} onChange={handleChange} />
             <BeforeContent search={search} onSearch={handleSearch} isFavorites={isFavorites} onFavorites={handleFavorites} />
             {/* <Path /> */}
-            <Main category={category} search={search} isFavorites={isFavorites} onSelect={handleSelect}
-                condition={condition} typeCooler={typeCooler} socket={socket} core={core}
-                cpuFrequency={cpuFrequency} fsbVar={fsb} tdp={tdp} ramType={ramType} ramSize={ramSize}
-                ramFraq={ramFraq} videoInterface={videoInterface} hddInterface={hddInterface}
-                platform={platform} videoBitrate={videoBitrate} hddType={hddType} hddSize={hddSize}
-                bpPower={bpPower} />
+            <Main category={category} search={search} isFavorites={isFavorites} onSelect={handleSelect} filters={filters} />
             {/* <Pagination /> */}
             <Footer />
         </div>
@@ -56,121 +55,29 @@ function App() {
         setCategory(artcl)
         setSearch('')
         setIsFavorites(false)
-        setCondition('Любое')
-        setSocket('Все')
-        setCPUFrequency('Все')
-        setFSB('Все')
-        setTDP('Все')
-        setRAMType('Все')
-        setRAMSize('Все')
-        setRAMFraq('Все')
-        setVideoInterface('Все')
-        setHDDInterface('Все')
-        setPlatform('Все')
-        setVideoBitrate('Все')
-        setHDDType('Все')
-        setHDDSize('Все')
-        setBPPower('Все')
+        setFilters(dataFilters)
     }
 
     function handleSearch(event) {
         setSearch(event.target.value)
         setCategory('')
         setIsFavorites(false)
-        setCondition('Любое')
-        setSocket('Все')
-        setCPUFrequency('Все')
-        setFSB('Все')
-        setTDP('Все')
-        setRAMType('Все')
-        setRAMSize('Все')
-        setRAMFraq('Все')
-        setVideoInterface('Все')
-        setHDDInterface('Все')
-        setPlatform('Все')
-        setVideoBitrate('Все')
-        setHDDType('Все')
-        setHDDSize('Все')
-        setBPPower('Все')
+        setFilters(dataFilters)
     }
 
     function handleFavorites() {
         setIsFavorites(!isFavorites)
         setCategory('')
         setSearch('')
-        setCondition('Любое')
-        setSocket('Все')
-        setCPUFrequency('Все')
-        setFSB('Все')
-        setTDP('Все')
-        setRAMType('Все')
-        setRAMSize('Все')
-        setRAMFraq('Все')
-        setVideoInterface('Все')
-        setHDDInterface('Все')
-        setPlatform('Все')
-        setVideoBitrate('Все')
-        setHDDType('Все')
-        setHDDSize('Все')
-        setBPPower('Все')
+        setFilters(dataFilters)
     }
 
-    function handleSelect(varSelect, variant) {
-        switch(varSelect) {
-            case 'Состояние':
-                setCondition(variant)
-                break
-            case 'Тип кулеров':
-                variant !== 'Процессорный' && setSocket('Все')
-                setTypeCooler(variant)
-                break
-            case 'Сокет':
-                setSocket(variant)
-                break
-            case 'Количество ядер':
-                setCore(variant)
-                break
-            case 'Частота':
-                setCPUFrequency(variant)
-                break
-            case 'Частота шины':
-                setFSB(variant)
-                break
-            case 'Мощность тепловыделения':
-                setTDP(variant)
-                break
-            case 'Тип ОЗУ':
-                setRAMType(variant)
-                break
-            case 'Объем ОЗУ':
-                setRAMSize(variant)
-                break
-            case 'Частота ОЗУ':
-                setRAMFraq(variant)
-                break
-            case 'Тип видео-интерфейса':
-                setVideoInterface(variant)
-                break
-            case 'Тип HDD-интерфейса':
-                setHDDInterface(variant)
-                break
-            case 'Платформа':
-                setPlatform(variant)
-                break
-            case 'Разрядность шины':
-                setVideoBitrate(variant)
-                break
-            case 'Тип накопителя':
-                setHDDType(variant)
-                break
-            case 'Объем накопителя':
-                setHDDSize(variant)
-                break
-            case 'Мощность':
-                setBPPower(variant)
-                break
-            default:
-                break
+    function handleSelect(filter, filterName, variant) {
+        if(filter === 'typeCooler' && variant === 'Корпусной') {
+            setFilters({...filters, socket: {name: 'Сокет', value: 'Все'}, typeCooler: {name: 'Тип кулеров', value: variant}})
+        }
+        else {
+            setFilters({...filters, [filter]: {name: filterName, value: variant}})
         }
     }
 }

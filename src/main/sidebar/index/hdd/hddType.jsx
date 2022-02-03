@@ -3,7 +3,7 @@ import MySelect from '../mySelect'
 import goods from '../../../../db/goods'
 
 
-const HDDType = ({ hddType, onSelect }) => {
+const HDDType = ({ filters, onSelect }) => {
     const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === '4')
     const types = ['HDD', 'SSD']
 
@@ -17,7 +17,7 @@ const HDDType = ({ hddType, onSelect }) => {
         }
     })
 
-    return <MySelect title={'Тип накопителя'} variants={variants} variant={hddType} onSelect={onSelect} />
+    return <MySelect filter={'hddType'} filterObject={filters.hddType} variants={variants} onSelect={onSelect} />
 }
 
 export default HDDType

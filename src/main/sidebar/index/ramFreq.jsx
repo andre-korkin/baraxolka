@@ -3,9 +3,9 @@ import MySelect from './mySelect'
 import goods from '../../../db/goods'
 
 
-const RAMFraq = ({ category, ramFraq, onSelect }) => {
+const RAMFraq = ({ category, filters, onSelect }) => {
     const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
-    const ram = ['33', '66', '100', '133', '166', '200', '333', '400', '533', '667', '800', '1066', '1333', '1600', '2000', '2133', '2400', '2666', '3200']
+    const ram = ['33', '66', '100', '133', '166', '200', '333', '400', '533', '667', '800', '1066', '1200', '1333', '1600', '2000', '2133', '2400', '2666', '3200']
 
     let arr = []  // список имеющихся ram
     goodList.forEach(good => {
@@ -24,7 +24,7 @@ const RAMFraq = ({ category, ramFraq, onSelect }) => {
         }
     })
 
-    return <MySelect title={'Частота ОЗУ'} variants={variants} variant={ramFraq} onSelect={onSelect} />
+    return <MySelect filter={'ramFraq'} filterObject={filters.ramFraq} variants={variants} onSelect={onSelect} />
 }
 
 export default RAMFraq
