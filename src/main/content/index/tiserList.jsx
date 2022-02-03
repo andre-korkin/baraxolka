@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import goods from '../../../db/goods'
+import Pagination from '../pagination'
 import Tiser from './tiser'
 
 
 const TiserList =({ category, search, isFavorites, filters }) => {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
+    const [currentPage, setCurrentPage] = useState(1)
+    useEffect(() => setCurrentPage(1), [category])
 
     let goodList = goods.filter(good => good['Количество'] !== '0')
 
@@ -77,13 +80,17 @@ const TiserList =({ category, search, isFavorites, filters }) => {
         goodList = filters.bpPower.value !== 'Все' ? goodList.filter(good => good['Мощность'] === filters.bpPower.value) : goodList
     }
 
+    const allNumberPage = goodList && Math.ceil(goodList.length / 12)
+    const currentGoodList = goodList && goodList.slice((currentPage - 1) * 12, currentPage * 12)
 
-    return goodList.length !== 0
+
+    return currentGoodList.length !== 0
         ? <>
-            {goodList.map(good => <Tiser data={good}
+            {currentGoodList.map(good => <Tiser data={good}
                 favorites={favorites} onFavorites={toggleFavorites}
                 cart={cart} onCart={toggleCart}
                 key={good['Артикул']} />)}
+            {allNumberPage > 1 && <Pagination current={currentPage} all={allNumberPage} onPage={handleChangePage} />}
         </>
         : <h2 className='not_found'>Ничего не найдено.<br/>Попробуйте изменить условия фильтрации.</h2>
 
@@ -183,6 +190,10 @@ const TiserList =({ category, search, isFavorites, filters }) => {
         else {
             return good['Тип HDD-интерфейса'] === filters.hddInterface.value
         }
+    }
+
+    function handleChangePage(numberPage) {
+        setCurrentPage(numberPage)
     }
 }
 

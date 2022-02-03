@@ -4,7 +4,6 @@ import Categories from './main/content/categories'
 import BeforeContent from './beforeContent'
 // import Path from './main/content/path'
 import Main from './main/main'
-// import Pagination from './main/content/pagination'
 import Footer from './footer/main'
 
 

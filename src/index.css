@@ -265,10 +265,9 @@ h1 {
 }
 
 .pagination {
-  width: 75%;
+  width: 100%;
   text-align: center;
-  margin-bottom: 50px;
-  margin-left: -30px;
+  margin: 0 auto 50px auto;
 }
 
 .pagination ul {
