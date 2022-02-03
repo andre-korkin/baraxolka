@@ -3,7 +3,7 @@ import MySelect from './mySelect'
 import goods from '../../../db/goods'
 
 
-const Socket = ({ category, socket, onSelect }) => {
+const Socket = ({ category, filters, onSelect }) => {
     const goodList = goods.filter(good => good['Количество'] !== '0')
     const sockets = ['478', '775', '1156', '1155', '1150', '1151', '462', 'AM2', 'AM2+', 'AM3', 'AM3+', 'AM4']
 
@@ -44,7 +44,7 @@ const Socket = ({ category, socket, onSelect }) => {
         }
     })
 
-    return <MySelect title={'Сокет'} variants={variants} variant={socket} onSelect={onSelect} />
+    return <MySelect filter={'socket'} filterObject={filters.socket} variants={variants} onSelect={onSelect} />
 }
 
 export default Socket

@@ -3,7 +3,7 @@ import MySelect from './mySelect'
 import goods from '../../../db/goods'
 
 
-const BPPower = ({ bpPower, onSelect }) => {
+const BPPower = ({ filters, onSelect }) => {
     const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === '5')
     const bp = ['300', '350', '400', '450', '500', '550', '600']
 
@@ -17,7 +17,7 @@ const BPPower = ({ bpPower, onSelect }) => {
         }
     })
 
-    return <MySelect title={'Мощность'} variants={variants} variant={bpPower} onSelect={onSelect} />
+    return <MySelect filter={'bpPower'} filterObject={filters.bpPower} variants={variants} onSelect={onSelect} />
 }
 
 export default BPPower

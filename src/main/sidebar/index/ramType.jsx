@@ -3,7 +3,7 @@ import MySelect from './mySelect'
 import goods from '../../../db/goods'
 
 
-const RAMType = ({ category, ramType, onSelect }) => {
+const RAMType = ({ category, filters, onSelect }) => {
     const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
     const ram = ['DDR', 'DDR2', 'DDR3', 'DDR4', 'DDR5', 'GDDR5', 'GDDR6']
 
@@ -24,7 +24,7 @@ const RAMType = ({ category, ramType, onSelect }) => {
         }
     })
 
-    return <MySelect title={'Тип ОЗУ'} variants={variants} variant={ramType} onSelect={onSelect} />
+    return <MySelect filter={'ramType'} filterObject={filters.ramType} variants={variants} onSelect={onSelect} />
 }
 
 export default RAMType

@@ -3,7 +3,7 @@ import MySelect from './mySelect'
 import goods from '../../../db/goods'
 
 
-const FSB = ({ category, fsbVar, onSelect }) => {
+const FSB = ({ category, filters, onSelect }) => {
     const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
     const fsb = ['33', '66', '100', '133', '166', '200', '333', '400', '533', '667', '800', '1066', '1333', '1600', '2000', '2133', '2400', '2666', '3200', 'Адаптивная']
 
@@ -24,7 +24,7 @@ const FSB = ({ category, fsbVar, onSelect }) => {
         }
     })
 
-    return <MySelect title={'Частота шины'} variants={variants} variant={fsbVar} onSelect={onSelect} />
+    return <MySelect filter={'fsb'} filterObject={filters.fsb} variants={variants} onSelect={onSelect} />
 }
 
 export default FSB

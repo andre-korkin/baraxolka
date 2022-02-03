@@ -3,7 +3,7 @@ import MySelect from './mySelect'
 import goods from '../../../db/goods'
 
 
-const HDDInterface = ({ category, hddInterface, onSelect }) => {
+const HDDInterface = ({ category, filters, onSelect }) => {
     const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
     const intrface = ['ATA', 'SATA', 'SATAII', 'SATA3']
 
@@ -17,7 +17,7 @@ const HDDInterface = ({ category, hddInterface, onSelect }) => {
         }
     })
 
-    return <MySelect title={'Тип HDD-интерфейса'} variants={variants} variant={hddInterface} onSelect={onSelect} />
+    return <MySelect filter={'hddInterface'} filterObject={filters.hddInterface} variants={variants} onSelect={onSelect} />
 }
 
 export default HDDInterface

@@ -3,7 +3,7 @@ import MySelect from './mySelect'
 import goods from '../../../db/goods'
 
 
-const Platform = ({ category, platform, onSelect }) => {
+const Platform = ({ category, filters, onSelect }) => {
     const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
     const pltfrm = ['компьютер', 'ноутбук']
 
@@ -17,7 +17,7 @@ const Platform = ({ category, platform, onSelect }) => {
         }
     })
 
-    return <MySelect title={'Платформа'} variants={variants} variant={platform} onSelect={onSelect} />
+    return <MySelect filter={'platform'} filterObject={filters.platform} variants={variants} onSelect={onSelect} />
 }
 
 export default Platform

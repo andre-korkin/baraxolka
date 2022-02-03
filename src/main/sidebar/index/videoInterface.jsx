@@ -3,7 +3,7 @@ import MySelect from './mySelect'
 import goods from '../../../db/goods'
 
 
-const VideoInterface = ({ category, videoInterface, onSelect }) => {
+const VideoInterface = ({ category, filters, onSelect }) => {
     const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
     const intrface = ['AGP', 'PCI', 'PCI 2.0', 'PCI 3.0']
 
@@ -17,7 +17,7 @@ const VideoInterface = ({ category, videoInterface, onSelect }) => {
         }
     })
 
-    return <MySelect title={'Тип видео-интерфейса'} variants={variants} variant={videoInterface} onSelect={onSelect} />
+    return <MySelect filter={'videoInterface'} filterObject={filters.videoInterface} variants={variants} onSelect={onSelect} />
 }
 
 export default VideoInterface

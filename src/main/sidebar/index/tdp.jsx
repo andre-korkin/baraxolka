@@ -3,7 +3,7 @@ import MySelect from './mySelect'
 import goods from '../../../db/goods'
 
 
-const TDP = ({ tdp, onSelect }) => {
+const TDP = ({ filters, onSelect }) => {
     const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === '0')
 
     let arr = []  // список имеющихся tdp
@@ -11,7 +11,7 @@ const TDP = ({ tdp, onSelect }) => {
 
     const variants = ['Все', ...arr.sort(( a, b ) =>  a - b)]  // имеющиеся tdp в порядке возрастания
 
-    return <MySelect title={'Мощность тепловыделения'} variants={variants} variant={tdp} onSelect={onSelect} />
+    return <MySelect filter={'tdp'} filterObject={filters.tdp} variants={variants} onSelect={onSelect} />
 }
 
 export default TDP

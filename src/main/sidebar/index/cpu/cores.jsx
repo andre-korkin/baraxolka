@@ -3,7 +3,7 @@ import MySelect from '../mySelect'
 import goods from '../../../../db/goods'
 
 
-const Cores = ({ core, onSelect }) => {
+const Cores = ({ filters, onSelect }) => {
     const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === '0')
     const cores = ['1', '2', '3', '4', '6', '8', '10', '12', 'Больше 12']
 
@@ -20,7 +20,7 @@ const Cores = ({ core, onSelect }) => {
         }
     })
 
-    return <MySelect title={'Количество ядер'} variants={variants} variant={core} onSelect={onSelect} />
+    return <MySelect filter={'core'} filterObject={filters.core} variants={variants} onSelect={onSelect} />
 }
 
 export default Cores

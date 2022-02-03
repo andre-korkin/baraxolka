@@ -3,7 +3,7 @@ import MySelect from './mySelect'
 import goods from '../../../db/goods'
 
 
-const RAMSize = ({ category, ramSize, onSelect }) => {
+const RAMSize = ({ category, filters, onSelect }) => {
     const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
     let ram = []
     if(category === '1') {
@@ -31,7 +31,7 @@ const RAMSize = ({ category, ramSize, onSelect }) => {
         }
     })
 
-    return <MySelect title={'Объем ОЗУ'} variants={variants} variant={ramSize} onSelect={onSelect} />
+    return <MySelect filter={'ramSize'} filterObject={filters.ramSize} variants={variants} onSelect={onSelect} />
 }
 
 export default RAMSize

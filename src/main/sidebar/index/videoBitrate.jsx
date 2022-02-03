@@ -3,7 +3,7 @@ import MySelect from './mySelect'
 import goods from '../../../db/goods'
 
 
-const VideoBitrate = ({ videoBitrate, onSelect }) => {
+const VideoBitrate = ({ filters, onSelect }) => {
     const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === '3')
     const intrface = ['32', '64', '128', '192', '256']
 
@@ -17,7 +17,7 @@ const VideoBitrate = ({ videoBitrate, onSelect }) => {
         }
     })
 
-    return <MySelect title={'Разрядность шины'} variants={variants} variant={videoBitrate} onSelect={onSelect} />
+    return <MySelect filter={'videoBitrate'} filterObject={filters.videoBitrate} variants={variants} onSelect={onSelect} />
 }
 
 export default VideoBitrate
