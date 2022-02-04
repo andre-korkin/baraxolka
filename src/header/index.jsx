@@ -3,7 +3,7 @@ import TopMenu from './topMenu'
 import SocialLinks from './socialLinks'
 
 
-const Head = () => {
+const Header = () => {
     return (
         <div className="head">
             <table>
@@ -32,4 +32,4 @@ const Head = () => {
     )
 }
 
-export default Head
+export default Header

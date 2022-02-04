@@ -48,17 +48,19 @@ h1 {
 .head table ul li {
   margin: 0 20px;
   display: inline-block;
+  transition: 0.3s;
+}
+.head table ul li a {
   font-size: 20px;
   color: rgb(15, 94, 160);
   line-height: 32px;
-  cursor: pointer;
-  transition: 0.3s;
+  text-decoration: none;
 }
-.head table ul li:hover {
+.head table ul li:hover a {
   color: red;
 }
 
-.head .active {
+.head .active a {
   color: red;
 }
 
