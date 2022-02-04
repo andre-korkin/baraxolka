@@ -11,6 +11,7 @@ function App() {
     const [category, setCategory] = useState('')
     const [search, setSearch] = useState('')
     const [isFavorites, setIsFavorites] = useState(false)
+    const [isSorting, setIsSorting] = useState(false)
 
     const dataFilters = {
         condition: {name: 'Состояние', value: 'Все'},
@@ -41,9 +42,12 @@ function App() {
         <div className="container">
             <Head />
             <Categories category={category} onChange={handleChange} />
-            <BeforeContent search={search} onSearch={handleSearch} isFavorites={isFavorites} onFavorites={handleFavorites} />
+            <BeforeContent search={search} onSearch={handleSearch}
+                isFavorites={isFavorites} onFavorites={handleFavorites}
+                isSorting={isSorting} onSorting={handleSorting} />
             {/* <Path /> */}
-            <Main category={category} search={search} isFavorites={isFavorites} onSelect={handleSelect} filters={filters} />
+            <Main search={search} isFavorites={isFavorites} isSorting={isSorting}
+                category={category} onSelect={handleSelect} filters={filters} />
             {/* <Pagination /> */}
             <Footer />
         </div>
@@ -69,6 +73,10 @@ function App() {
         setCategory('')
         setSearch('')
         setFilters(dataFilters)
+    }
+
+    function handleSorting() {
+        setIsSorting(!isSorting)
     }
 
     function handleSelect(filter, filterName, variant) {

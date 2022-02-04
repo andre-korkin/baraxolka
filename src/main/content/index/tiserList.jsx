@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react'
 import goods from '../../../db/goods'
 import Pagination from '../pagination'
 import Tiser from './tiser'
+import _ from 'lodash'
 
 
-const TiserList =({ category, search, isFavorites, filters }) => {
+const TiserList =({ category, search, isFavorites, isSorting, filters }) => {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
     const [currentPage, setCurrentPage] = useState(1)
@@ -80,8 +81,10 @@ const TiserList =({ category, search, isFavorites, filters }) => {
         goodList = filters.bpPower.value !== 'Все' ? goodList.filter(good => good['Мощность'] === filters.bpPower.value) : goodList
     }
 
+    const sortPriceGoodList = isSorting ? _.orderBy(goodList, ['Цена'], ['asc']) : goodList
+
     const allNumberPage = goodList && Math.ceil(goodList.length / 12)
-    const currentGoodList = goodList && goodList.slice((currentPage - 1) * 12, currentPage * 12)
+    const currentGoodList = goodList && sortPriceGoodList.slice((currentPage - 1) * 12, currentPage * 12)
 
 
     return currentGoodList.length !== 0

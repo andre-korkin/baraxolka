@@ -124,11 +124,18 @@ h1 {
 
 .sorting {
   margin-left: 0;
-  color: #666;
-  border: solid 1px #bbb;
+  color: #fff;
+  border: solid 1px steelblue;
+  background: rgba(70, 130, 180, 0.6);
+  border-radius: 5px;
 }
 .sorting:hover {
-  border: solid 1px #666;
+  background: rgba(70, 130, 180, 0.9);
+}
+.sorting.active {
+  border: solid 1px steelblue;
+  background: rgba(70, 130, 180, 0.9);
+  color: #fff;
 }
 
 .toggle-favorites {
@@ -149,6 +156,7 @@ h1 {
   border: solid 1px #bbb;
   width: 600px;
   padding: 10px;
+  border-radius: 5px;
 }
 .search:hover {
   border: solid 1px #666;
