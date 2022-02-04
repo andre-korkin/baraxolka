@@ -284,6 +284,7 @@ h1 {
 
 .pagination li {
   display: inline-block;
+  width: 20px;
   padding: 10px;
   color: steelblue;
   border-bottom: solid 1px steelblue;
