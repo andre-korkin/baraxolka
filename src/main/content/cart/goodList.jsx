@@ -1,9 +1,11 @@
 import React from 'react'
+import AmountItem from '../amoutItem'
+import DeleteItem from '../deleteItem'
 
 
-const GoodList = () => {
-    return (
-        <table className="good-list">
+const GoodList = ({ goodsInCart, goodsCost, onIncrement, onDecrement, onDelete }) => {
+    return goodsInCart.length !== 0
+        ? <table className="good-list">
             <thead>
                 <tr>
                     <th>Фото</th>
@@ -16,43 +18,82 @@ const GoodList = () => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><img src="./img/ram/transcend-2-1333.png" alt="" /></td>
-                    <td className="link">DDR3 Transcend 2Gb</td>
-                    <td>000002</td>
-                    <td>4 000 тг</td>
-                    <td>
-                        <table>
-                            <tbody>
-                                <tr><td>▲</td></tr>
-                                <tr><td>2</td></tr>
-                                <tr><td>▼</td></tr>
-                            </tbody>
-                        </table>
-                    </td>
-                    <td>8 000 тг</td>
-                    <td><div className="delete">×</div></td>
-                </tr>
-                <tr>
-                    <td><img src="./img/hdd/wd-1tb.jpg" alt="" /></td>
-                    <td className="link">HDD Western Digital 1Tb</td>
-                    <td>000106</td>
-                    <td>15 000 тг</td>
-                    <td>
-                        <table>
-                            <tbody>
-                                <tr><td>▲</td></tr>
-                                <tr><td>1</td></tr>
-                                <tr><td>▼</td></tr>
-                            </tbody>
-                        </table>
-                    </td>
-                    <td>15 000 тг</td>
-                    <td><div className="delete">×</div></td>
-                </tr>
+                {goodsInCart.map(good => {
+                    return (
+                        <tr key={good['Артикул']}>
+                            <td><img  src={good['Фото'] ? imgPrefix(good) + good['Фото'] : './img/no-image.png'} alt='' /></td>
+                            <td className="link">{goodName(good)}</td>
+                            <td>{good['Артикул']}</td>
+                            <td>{good['Цена']} тг</td>
+                            <td>
+                                <AmountItem good={good} amount={goodsCost[good['Артикул']].amount} onIncrement={onIncrement} onDecrement={onDecrement} />
+                            </td>
+                            <td>{goodsCost[good['Артикул']].cost} тг</td>
+                            <td><DeleteItem good={good} onDelete={onDelete} /></td>
+                        </tr>
+                    )
+                })}
             </tbody>
         </table>
-    )
+        : <h2 className='not_found'>В корзине пока нет товаров.</h2>
+
+    function imgPrefix(good) {
+        const artcl = good['Артикул'][0]
+        let prefix = './img/'
+
+        switch(artcl) {
+            case '0':
+                prefix += 'cpu/'
+                break
+            case '1':
+                prefix += 'mb/'
+                break
+            case '2':
+                prefix += 'ram/'
+                break
+            case '3':
+                prefix += 'vc/'
+                break
+            case '4':
+                prefix += 'hdd/'
+                break
+            case '5':
+                prefix += 'bp/'
+                break
+            case '6':
+                prefix += 'cool/'
+                break
+            default:
+                break
+        }
+
+        return prefix
+    }
+
+    function goodName(good) {
+        let title = good['Название']
+
+        const artcl = good['Артикул'][0]
+
+        switch(artcl) {
+            case '2':
+                title = good['Тип ОЗУ'] + ' ' + good['Бренд'] + ' ' + good['Объем ОЗУ']
+                break
+            case '4':
+                title = good['Тип накопителя'] + ' ' + good['Бренд'] + ' ' + good['Объем']
+                break
+            case '5':
+                title += ' ' + good['Мощность'] + ' Вт'
+                break
+            case '6':
+                title += !good['Сокет'] ? ' ' + good['Диаметр'] + ' мм' : ''
+                break
+            default:
+                break
+        }
+
+        return title
+    }
 }
 
 export default GoodList

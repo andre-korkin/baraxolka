@@ -1,17 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
-const Path = () => {
+const Path = ({ page }) => {
     return (
         <div className="path">
             <ul>
-                <li>Главная</li>
+                <li><Link to='/'>Главная</Link></li>
                 {/* <li>Процессоры</li>
                 <li className="active">Pentium E6700</li> */}
                 {/* <li className="active">Корзина</li> */}
-                {/* <li>Корзина</li>
-                <li className="active">Оформление заказа</li> */}
-                <li className="active">Вход/регистрация</li>
+                {page === '/cart' && <li className={page === '/cart' ? 'active' : ''}>Корзина</li>}
+                {/* <li>Оформление заказа</li> */}
+                {/* <li className="active">Вход/регистрация</li> */}
             </ul>
         </div>
     )

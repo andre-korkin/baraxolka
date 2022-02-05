@@ -414,16 +414,18 @@ h1 {
 .path ul > li {
   padding: 20px 0;
   display: inline-block;
-  font-size: 17px;
-  color: rgb(15, 94, 160);
-  cursor: pointer;
   transition: 0.3s;
 }
-.path ul > li:hover {
+.path ul > li a {
+  font-size: 17px;
+  color: rgb(15, 94, 160);
+  text-decoration: none;
+}
+.path ul > li:hover a {
   color: #000;
 }
 
-.path .active {
+.path .active a {
   cursor: auto;
   color: #000;
 }
@@ -700,6 +702,10 @@ h1 {
 }
 .good-list .edit:hover {
   transform: scale(120%);
+}
+
+.good-list table {
+  width: 80%;
 }
 
 .good-list table tr:nth-child(odd) {

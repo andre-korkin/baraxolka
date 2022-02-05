@@ -39,12 +39,12 @@ function Home() {
 
     return (
         <div className="container">
-            <Header />
+            <Header page={'/'} />
             <Categories category={category} onChange={handleChange} />
             <BeforeContent search={search} onSearch={handleSearch}
                 isFavorites={isFavorites} onFavorites={handleFavorites}
                 isSorting={isSorting} onSorting={handleSorting} />
-            <Main search={search} isFavorites={isFavorites} isSorting={isSorting}
+            <Main page={'/'} search={search} isFavorites={isFavorites} isSorting={isSorting}
                 category={category} onSelect={handleSelect} filters={filters} />
             <Footer />
         </div>
