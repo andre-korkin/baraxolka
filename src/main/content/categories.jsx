@@ -3,7 +3,7 @@ import React from 'react'
 
 const Categories = ({ category, onChange }) => {
     const catList = [
-        {artcl: '', name: 'Все товары'},
+        {artcl: undefined, name: 'Все товары'},
         {artcl: '0', name: 'Процессоры'},
         {artcl: '1', name: 'Мат. платы'},
         {artcl: '2', name: 'Оп. память'},
@@ -19,7 +19,8 @@ const Categories = ({ category, onChange }) => {
         <div className="categories">
             <ul>
                 {catList.map(cat => {
-                    return <li className={category === cat.artcl ? 'active' : ''} onClick={() => onChange(cat.artcl)} key={cat.artcl}>{cat.name}</li>
+                    return <li className={category === cat.artcl ? 'active' : ''} onClick={() => onChange(cat.artcl)}
+                        key={cat.artcl || ''}>{cat.name}</li>
                 })}
             </ul>
         </div>
