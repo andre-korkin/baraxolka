@@ -11,71 +11,49 @@ function Cart() {
     const goodArticles = JSON.parse(localStorage.getItem('cart'))
     const goodsInCart = goods.filter(good => goodArticles.includes(good['Артикул']))
 
-    const goodsData = {}
-    goodsInCart.forEach(good => {
-        goodsData[good['Артикул']] = {
-            price: good['Цена'],
-            amount: 1,
-            amountMax: good['Количество'],
-            cost: good['Цена']
-        }
+    const orderInit = goodsInCart.map(good => {
+        return {...good, amount: 1, cost: good['Цена']}
     })
 
-    // const order = goodsInCart.map(good => {
-    //     return {...good, amount: 1, cost: good['Цена']}
-    // })
-
-    const [goodsCost, setGoodsCost] = useState(goodsData)
-    const allSumCost = Object.keys(goodsCost).map(data => goodsCost[data].cost).reduce((a, b) => a + b)
+    const [order, setOrder] = useState(orderInit)
+    const orderCost = goodsInCart.length !== 0 && order.map(good => good.amount * good['Цена']).reduce((a, b) => a + b)
 
     return (
         <div className="container">
             <Header page={'/cart'} />
             <Path page={'/cart'} />
-            <Main page={'/cart'} goodsInCart={goodsInCart} goodsCost={goodsCost} allSumCost={allSumCost}
+            <Main page={'/cart'} order={order} orderCost={orderCost}
                 onIncrement={handleIncrement} onDecrement={handleDecrement} onDelete={handleDelete} />
             <Footer />
         </div>
     )
 
-    function handleIncrement(good) {
-        let newAmount = goodsCost[good['Артикул']].amount
-        let newCost = goodsCost[good['Артикул']].cost
+    function handleIncrement(artcl) {
+        const newOrder = order.map(good => {
+            if(good['Артикул'] === artcl && good.amount < good['Количество']) {
+                good.amount++
+            }
+            return good
+        })
 
-        if(newAmount < goodsCost[good['Артикул']].amountMax) {
-            newAmount++
-            newCost = good['Цена'] * newAmount
-        }
-
-        const newData = {
-            price: good['Цена'],
-            amount: newAmount,
-            amountMax: good['Количество'],
-            cost: newCost
-        }
-        setGoodsCost({...goodsCost, [good['Артикул']]: newData})
+        setOrder(newOrder)
     }
 
-    function handleDecrement(good) {
-        let newAmount = goodsCost[good['Артикул']].amount
-        let newCost = goodsCost[good['Артикул']].cost
+    function handleDecrement(artcl) {
+        const newOrder = order.map(good => {
+            if(good['Артикул'] === artcl && good.amount > 1) {
+                good.amount--
+            }
+            return good
+        })
 
-        if(newAmount > 1) {
-            newAmount--
-            newCost = good['Цена'] * newAmount
-        }
-
-        const newData = {
-            price: good['Цена'],
-            amount: newAmount,
-            amountMax: good['Количество'],
-            cost: newCost
-        }
-        setGoodsCost({...goodsCost, [good['Артикул']]: newData})
+        setOrder(newOrder)
     }
 
-    function handleDelete(good) {
-
+    function handleDelete(artcl) {
+        const newOrder = order.filter(good => good['Артикул'] !== artcl)
+        setOrder(newOrder)
+        localStorage.setItem('cart', JSON.stringify(goodArticles.filter(item => item !== artcl)))
     }
 }
 
