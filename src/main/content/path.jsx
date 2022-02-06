@@ -12,7 +12,7 @@ const Path = ({ page }) => {
                 {/* <li className="active">Корзина</li> */}
                 {page === '/cart' && <li className={page === '/cart' ? 'active' : ''}>Корзина</li>}
                 {/* <li>Оформление заказа</li> */}
-                {/* <li className="active">Вход/регистрация</li> */}
+                {page === '/login' && <li className='active'>Вход/регистрация</li>}
             </ul>
         </div>
     )
