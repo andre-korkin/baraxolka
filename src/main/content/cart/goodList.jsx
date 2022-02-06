@@ -3,8 +3,8 @@ import AmountItem from '../amoutItem'
 import DeleteItem from '../deleteItem'
 
 
-const GoodList = ({ goodsInCart, goodsCost, onIncrement, onDecrement, onDelete }) => {
-    return goodsInCart.length !== 0
+const GoodList = ({ order, onIncrement, onDecrement, onDelete }) => {
+    return order.length !== 0
         ? <table className="good-list">
             <thead>
                 <tr>
@@ -18,7 +18,7 @@ const GoodList = ({ goodsInCart, goodsCost, onIncrement, onDecrement, onDelete }
                 </tr>
             </thead>
             <tbody>
-                {goodsInCart.map(good => {
+                {order.map(good => {
                     return (
                         <tr key={good['Артикул']}>
                             <td><img  src={good['Фото'] ? imgPrefix(good) + good['Фото'] : './img/no-image.png'} alt='' /></td>
@@ -26,9 +26,9 @@ const GoodList = ({ goodsInCart, goodsCost, onIncrement, onDecrement, onDelete }
                             <td>{good['Артикул']}</td>
                             <td>{good['Цена']} тг</td>
                             <td>
-                                <AmountItem good={good} amount={goodsCost[good['Артикул']].amount} onIncrement={onIncrement} onDecrement={onDecrement} />
+                                <AmountItem good={good} onIncrement={onIncrement} onDecrement={onDecrement} />
                             </td>
-                            <td>{goodsCost[good['Артикул']].cost} тг</td>
+                            <td>{good.amount * good['Цена']} тг</td>
                             <td><DeleteItem good={good} onDelete={onDelete} /></td>
                         </tr>
                     )

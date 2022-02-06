@@ -20,7 +20,7 @@ import InCart from './sidebar/cart/inCart'
 // import SidebarCart from './sidebar/sidebarCart'
 
 
-const Sidebar = ({ page, category, filters, onSelect, goodsCost, allSumCost}) => {
+const Sidebar = ({ page, category, filters, onSelect, order, orderCost}) => {
     return (
         <div className="sidebar">
             {page === '/' && <>
@@ -44,7 +44,7 @@ const Sidebar = ({ page, category, filters, onSelect, goodsCost, allSumCost}) =>
                 {category === '4' && <HDDSize filters={filters} onSelect={onSelect} />}
                 {category === '5' && <BPPower filters={filters} onSelect={onSelect} />}
             </>}
-            {page === '/cart' && <InCart goodsCost={goodsCost} allSumCost={allSumCost} />}
+            {page === '/cart' && <InCart order={order} orderCost={orderCost} />}
             {/* <SidebarCart /> */}
         </div>
     )
