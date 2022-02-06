@@ -6,8 +6,37 @@ import Main from '../main'
 import Footer from '../footer'
 
 
-function Home() {
-    const [category, setCategory] = useState('')
+function Home({ match }) {
+    const catLabelInit = match.params.catLabel
+    const catInit = () => {
+        if(catLabelInit === undefined) return undefined
+        else {
+            switch(catLabelInit.toLowerCase()) {
+                case 'cpu':
+                    return '0'
+                case 'motherboard':
+                    return '1'
+                case 'ram':
+                    return '2'
+                case 'videocard':
+                    return '3'
+                case 'hdd':
+                    return '4'
+                case 'bp':
+                    return '5'
+                case 'cooler':
+                    return '6'
+                case 'set':
+                    return '7'
+                case 'comp':
+                    return '8'
+                default:
+                    return undefined
+            }
+        }
+    }
+
+    const [category, setCategory] = useState(catInit)
     const [search, setSearch] = useState('')
     const [isFavorites, setIsFavorites] = useState(false)
     const [isSorting, setIsSorting] = useState(false)
@@ -60,14 +89,14 @@ function Home() {
 
     function handleSearch(event) {
         setSearch(event.target.value)
-        setCategory('')
+        setCategory(undefined)
         setIsFavorites(false)
         setFilters(dataFilters)
     }
 
     function handleFavorites() {
         setIsFavorites(!isFavorites)
-        setCategory('')
+        setCategory(undefined)
         setSearch('')
         setFilters(dataFilters)
     }
