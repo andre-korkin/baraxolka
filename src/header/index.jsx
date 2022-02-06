@@ -9,7 +9,7 @@ const Header = ({ page }) => {
             <table>
                 <tbody>
                     <tr>
-                        <td><img src="./logo.jpg" alt="logo" /></td>
+                        <td><img src="../logo.jpg" alt="logo" /></td>
                         <td align="right">
                             <h1>Компьютерная барахолка</h1>
                             <table>

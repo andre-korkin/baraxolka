@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Header from '../header'
 import Categories from '../main/content/categories'
+import Path from '../main/content/path'
 import BeforeContent from '../beforeContent'
 import Main from '../main'
 import Footer from '../footer'
@@ -66,15 +67,24 @@ function Home({ match }) {
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
     !localStorage.getItem('favorites') && localStorage.setItem('favorites', JSON.stringify([]))
 
+    const goodArticle = match.params.goodArticle
+
     return (
         <div className="container">
-            <Header page={'/'} />
-            <Categories category={category} onChange={handleChange} />
-            <BeforeContent search={search} onSearch={handleSearch}
-                isFavorites={isFavorites} onFavorites={handleFavorites}
-                isSorting={isSorting} onSorting={handleSorting} />
-            <Main page={'/'} search={search} isFavorites={isFavorites} isSorting={isSorting}
-                category={category} onSelect={handleSelect} filters={filters} />
+            {!goodArticle && <>
+                <Header page={'/'} />
+                <Categories category={category} onChange={handleChange} />
+                <BeforeContent search={search} onSearch={handleSearch}
+                    isFavorites={isFavorites} onFavorites={handleFavorites}
+                    isSorting={isSorting} onSorting={handleSorting} />
+                <Main page={'/'} search={search} isFavorites={isFavorites} isSorting={isSorting}
+                    category={category} onSelect={handleSelect} filters={filters} />
+            </>}
+            {catLabelInit && goodArticle && <>
+                <Header page={''} />
+                <Path page={''} category={catLabelInit} />
+                <Main page={''} category={catLabelInit} goodArticle={goodArticle} />
+            </>}
             <Footer />
         </div>
     )

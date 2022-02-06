@@ -2,14 +2,40 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const Path = ({ page }) => {
+const Path = ({ page, category }) => {
+    const catName = () => {
+        if(category === undefined) return undefined
+        else {
+            switch(category.toLowerCase()) {
+                case 'cpu':
+                    return 'Процессоры'
+                case 'motherboard':
+                    return 'Материнские платы'
+                case 'ram':
+                    return 'Оперативная память'
+                case 'videocard':
+                    return 'Видеокарты'
+                case 'hdd':
+                    return 'Накопители'
+                case 'bp':
+                    return 'Блоки питания'
+                case 'cooler':
+                    return 'Кулеры'
+                case 'set':
+                    return 'Комплекты'
+                case 'comp':
+                    return 'Сборки'
+                default:
+                    return undefined
+            }
+        }
+    }
+
     return (
         <div className="path">
             <ul>
                 <li><Link to='/'>Главная</Link></li>
-                {/* <li>Процессоры</li>
-                <li className="active">Pentium E6700</li> */}
-                {/* <li className="active">Корзина</li> */}
+                {page === '' && catName() && <li><Link to={`/${category}`}>{catName()}</Link></li>}
                 {page === '/cart' && <li className={page === '/cart' ? 'active' : ''}>Корзина</li>}
                 {/* <li>Оформление заказа</li> */}
                 {page === '/login' && <li className='active'>Вход/регистрация</li>}
