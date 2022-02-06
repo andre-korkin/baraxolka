@@ -9,17 +9,17 @@ const Path = ({ page, category }) => {
             switch(category.toLowerCase()) {
                 case 'cpu':
                     return 'Процессоры'
-                case 'motherboard':
+                case 'mb':
                     return 'Материнские платы'
                 case 'ram':
                     return 'Оперативная память'
-                case 'videocard':
+                case 'vc':
                     return 'Видеокарты'
                 case 'hdd':
                     return 'Накопители'
                 case 'bp':
                     return 'Блоки питания'
-                case 'cooler':
+                case 'cool':
                     return 'Кулеры'
                 case 'set':
                     return 'Комплекты'
