@@ -10,7 +10,7 @@ import Good from './content/good/good'
 const Content = ({ page, category, goodArticle, ...props }) => {
     return (
         <div className="content">
-            {page === '/' && <TiserList { ...props } />}
+            {page === '/' && <TiserList category={category} { ...props } />}
             {page === '/cart' && <GoodList { ...props } />}
             {page === '/login' && <Login />}
             {page === '' && category && goodArticle && <Good category={category} goodArticle={goodArticle} />}

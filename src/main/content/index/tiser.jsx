@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import ToCart from '../toCart'
 import ToFavorites from '../toFavorites'
 
@@ -9,8 +10,8 @@ const Tiser =({ data, favorites, onFavorites, cart, onCart }) => {
 
     return (
         <div className='tiser'>
-            <img src={data['Фото'] ? imgPrefix() + data['Фото'] : './img/no-image.png'} alt='' />
-            <h2>{goodName()}</h2>
+            {<Link to={goodPath()}><img src={data['Фото'] ? imgPrefix() + data['Фото'] : './img/no-image.png'} alt='' /></Link>}
+            <h2>{<Link to={goodPath()}>{goodName()}</Link>}</h2>
             <h3>{data['Цена'] + ' тг'}</h3>
             <div className='buttons'>
                 <ToCart artcl={data['Артикул']} isCart={isCart} onCart={onCart} />
@@ -51,6 +52,47 @@ const Tiser =({ data, favorites, onFavorites, cart, onCart }) => {
         }
 
         return prefix
+    }
+
+    function goodPath() {
+        const artcl = data['Артикул'][0]
+        let url = ''
+
+        switch(artcl) {
+            case '0':
+                url = '/cpu/'
+                break
+            case '1':
+                url = '/mb/'
+                break
+            case '2':
+                url = '/ram/'
+                break
+            case '3':
+                url = '/vc/'
+                break
+            case '4':
+                url = '/hdd/'
+                break
+            case '5':
+                url = '/bp/'
+                break
+            case '6':
+                url = '/cool/'
+                break
+            case '7':
+                url = '/set/'
+                break
+            case '8':
+                url = '/comp/'
+                break
+            default:
+                break
+        }
+
+        url += data['Артикул']
+
+        return url
     }
 
     function goodName() {
