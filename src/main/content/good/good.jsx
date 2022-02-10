@@ -1,13 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Photo from './photo'
 import Text from './text'
 import goods from '../../../db/goods'
 
 
-const Good = ({ category, goodArticle }) => {
-    const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
-
+const Good = ({ category, goodArticle, favorites, onFavorites, cart, onCart }) => {
     const catInit = () => {
         if(category === undefined) return undefined
         else {
@@ -44,33 +41,9 @@ const Good = ({ category, goodArticle }) => {
     return (
         <>
             <Photo url={`../img/${category}/${good['Фото']}`} />
-            <Text good={good} favorites={favorites} onFavorites={toggleFavorites} cart={cart} onCart={toggleCart} />
+            <Text good={good} favorites={favorites} onFavorites={onFavorites} cart={cart} onCart={onCart} />
         </>
     )
-
-    function toggleFavorites(artcl) {
-        let newFavorites = []
-        if(favorites.includes(artcl)) {
-            newFavorites = favorites.filter(goodArticle => goodArticle !== artcl)
-        }
-        else {
-            newFavorites = [...favorites, artcl]
-        }
-        localStorage.setItem('favorites', JSON.stringify(newFavorites))
-        setFavorites(newFavorites)
-    }
-
-    function toggleCart(artcl) {
-        let newCart = []
-        if(cart.includes(artcl)) {
-            newCart = cart.filter(goodArticle => goodArticle !== artcl)
-        }
-        else {
-            newCart = [...cart, artcl]
-        }
-        localStorage.setItem('cart', JSON.stringify(newCart))
-        setCart(newCart)
-    }
 }
 
 export default Good

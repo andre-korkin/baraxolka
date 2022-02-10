@@ -5,9 +5,7 @@ import Tiser from './tiser'
 import _ from 'lodash'
 
 
-const TiserList =({ category, search, isFavorites, isSorting, filters }) => {
-    const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
+const TiserList =({ category, search, isFavorites, favorites, onFavorites, cart, onCart, isSorting, filters }) => {
     const [currentPage, setCurrentPage] = useState(1)
     useEffect(() => setCurrentPage(1), [category])
 
@@ -90,37 +88,12 @@ const TiserList =({ category, search, isFavorites, isSorting, filters }) => {
     return currentGoodList.length !== 0
         ? <>
             {currentGoodList.map(good => <Tiser data={good}
-                favorites={favorites} onFavorites={toggleFavorites}
-                cart={cart} onCart={toggleCart}
+                favorites={favorites} onFavorites={onFavorites}
+                cart={cart} onCart={onCart}
                 key={good['Артикул']} />)}
             {allNumberPage > 1 && <Pagination current={currentPage} all={allNumberPage} onPage={handleChangePage} />}
         </>
         : <h2 className='not_found'>Ничего не найдено.<br/>Попробуйте изменить условия фильтрации.</h2>
-
-
-    function toggleFavorites(artcl) {
-        let newFavorites = []
-        if(favorites.includes(artcl)) {
-            newFavorites = favorites.filter(goodArticle => goodArticle !== artcl)
-        }
-        else {
-            newFavorites = [...favorites, artcl]
-        }
-        localStorage.setItem('favorites', JSON.stringify(newFavorites))
-        setFavorites(newFavorites)
-    }
-
-    function toggleCart(artcl) {
-        let newCart = []
-        if(cart.includes(artcl)) {
-            newCart = cart.filter(goodArticle => goodArticle !== artcl)
-        }
-        else {
-            newCart = [...cart, artcl]
-        }
-        localStorage.setItem('cart', JSON.stringify(newCart))
-        setCart(newCart)
-    }
 
     function isHasSocket(good) {
         if(category !== '6') {
