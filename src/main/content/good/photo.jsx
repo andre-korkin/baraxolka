@@ -1,10 +1,10 @@
 import React from 'react'
 
 
-const Photo = () => {
+const Photo = ({ url }) => {
     return (
-        <div className="photo">
-            <img src="./img/cpu/pentium-e6700.jpeg" alt="Pentium E6700" />
+        <div className='photo'>
+            <img src={url} alt='' />
         </div>
     )
 }

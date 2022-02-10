@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Header from '../header'
 import Categories from '../main/content/categories'
+import Path from '../main/content/path'
 import BeforeContent from '../beforeContent'
 import Main from '../main'
 import Footer from '../footer'
@@ -66,15 +67,29 @@ function Home({ match }) {
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
     !localStorage.getItem('favorites') && localStorage.setItem('favorites', JSON.stringify([]))
 
+    const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
+
+    const goodArticle = match.params.goodArticle
+
     return (
         <div className="container">
-            <Header page={'/'} />
-            <Categories category={category} onChange={handleChange} />
-            <BeforeContent search={search} onSearch={handleSearch}
-                isFavorites={isFavorites} onFavorites={handleFavorites}
-                isSorting={isSorting} onSorting={handleSorting} />
-            <Main page={'/'} search={search} isFavorites={isFavorites} isSorting={isSorting}
-                category={category} onSelect={handleSelect} filters={filters} />
+            {!goodArticle && <>
+                <Header page={'/'} />
+                <Categories category={category} onChange={handleChange} />
+                <BeforeContent search={search} onSearch={handleSearch}
+                    isFavorites={isFavorites} onFavorites={handleFavorites}
+                    isSorting={isSorting} onSorting={handleSorting} />
+                <Main page={'/'} search={search} isFavorites={isFavorites} isSorting={isSorting}
+                    favorites={favorites} onFavorites={toggleFavorites} cart={cart} onCart={toggleCart}
+                    category={category} onSelect={handleSelect} filters={filters} />
+            </>}
+            {catLabelInit && goodArticle && <>
+                <Header page={''} />
+                <Path page={''} category={catLabelInit} />
+                <Main page={''} category={catLabelInit} goodArticle={goodArticle}
+                    favorites={favorites} onFavorites={toggleFavorites} cart={cart} onCart={toggleCart} />
+            </>}
             <Footer />
         </div>
     )
@@ -112,6 +127,30 @@ function Home({ match }) {
         else {
             setFilters({...filters, [filter]: {name: filterName, value: variant}})
         }
+    }
+
+    function toggleFavorites(artcl) {
+        let newFavorites = []
+        if(favorites.includes(artcl)) {
+            newFavorites = favorites.filter(goodArticle => goodArticle !== artcl)
+        }
+        else {
+            newFavorites = [...favorites, artcl]
+        }
+        localStorage.setItem('favorites', JSON.stringify(newFavorites))
+        setFavorites(newFavorites)
+    }
+
+    function toggleCart(artcl) {
+        let newCart = []
+        if(cart.includes(artcl)) {
+            newCart = cart.filter(goodArticle => goodArticle !== artcl)
+        }
+        else {
+            newCart = [...cart, artcl]
+        }
+        localStorage.setItem('cart', JSON.stringify(newCart))
+        setCart(newCart)
     }
 }
 

@@ -17,10 +17,10 @@ import HDDType from './sidebar/index/hdd/hddType'
 import HDDSize from './sidebar/index/hdd/hddSize'
 import BPPower from './sidebar/index/bpPower'
 import InCart from './sidebar/cart/inCart'
-// import SidebarCart from './sidebar/sidebarCart'
+import SidebarCart from './sidebar/good/sidebarCart'
 
 
-const Sidebar = ({ page, category, filters, onSelect, order, orderCost}) => {
+const Sidebar = ({ page, category, filters, onSelect, cart, onCart, order, orderCost}) => {
     return (
         <div className="sidebar">
             {page === '/' && <>
@@ -44,8 +44,8 @@ const Sidebar = ({ page, category, filters, onSelect, order, orderCost}) => {
                 {category === '4' && <HDDSize filters={filters} onSelect={onSelect} />}
                 {category === '5' && <BPPower filters={filters} onSelect={onSelect} />}
             </>}
+            {page === '' && <SidebarCart cart={cart} onCart={onCart} />}
             {page === '/cart' && <InCart order={order} orderCost={orderCost} />}
-            {/* <SidebarCart /> */}
         </div>
     )
 }

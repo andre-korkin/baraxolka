@@ -9,7 +9,7 @@ function App() {
         <Switch>
             <Route path='/login' component={Login} />
             <Route path='/cart' component={Cart} />
-            <Route path='/:catLabel?' render={(props => <Home {...props} />)} />
+            <Route path='/:catLabel?/:goodArticle?' render={(props => <Home {...props} />)} />
         </Switch>
     )
 }
