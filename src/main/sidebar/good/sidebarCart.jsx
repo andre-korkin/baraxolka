@@ -6,7 +6,7 @@ import goods from '../../../db/goods'
 const SidebarCart = ({ cart, onCart }) => {
     const goodList = cart && goods.filter(good => cart.includes(good['Артикул']))
 
-    return (
+    return cart.length > 0 && (
         <div className="cart">
             <h3>Товары в корзине</h3>
 
@@ -85,7 +85,7 @@ const SidebarCart = ({ cart, onCart }) => {
     }
 
     function cost() {
-        return goodList.map(good => good['Цена']).reduce((a, b) => a + b)
+        return goodList ? goodList.map(good => good['Цена']).reduce((a, b) => a + b) : 0
     }
 }
 
