@@ -13,7 +13,7 @@ const Content = ({ page, category, goodArticle, ...props }) => {
             {page === '/' && <TiserList category={category} { ...props } />}
             {page === '/cart' && <GoodList { ...props } />}
             {page === '/login' && <Login />}
-            {page === '' && category && goodArticle && <Good category={category} goodArticle={goodArticle} />}
+            {page === '' && category && goodArticle && <Good category={category} goodArticle={goodArticle} {...props} />}
             {/* <Order /> */}
             {/* <AdminGoodList /> */}
         </div>

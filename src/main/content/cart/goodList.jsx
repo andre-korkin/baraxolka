@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import AmountItem from '../amoutItem'
 import DeleteItem from '../deleteItem'
 
@@ -22,7 +23,7 @@ const GoodList = ({ order, onIncrement, onDecrement, onDelete }) => {
                     return (
                         <tr key={good['Артикул']}>
                             <td><img  src={good['Фото'] ? imgPrefix(good) + good['Фото'] : './img/no-image.png'} alt='' /></td>
-                            <td className="link">{goodName(good)}</td>
+                            <td className="link">{<Link to={goodPath(good)}>{goodName(good)}</Link>}</td>
                             <td>{good['Артикул']}</td>
                             <td>{good['Цена']} тг</td>
                             <td>
@@ -68,6 +69,47 @@ const GoodList = ({ order, onIncrement, onDecrement, onDelete }) => {
         }
 
         return prefix
+    }
+
+    function goodPath(good) {
+        const artcl = good['Артикул'][0]
+        let url = ''
+
+        switch(artcl) {
+            case '0':
+                url = '/cpu/'
+                break
+            case '1':
+                url = '/mb/'
+                break
+            case '2':
+                url = '/ram/'
+                break
+            case '3':
+                url = '/vc/'
+                break
+            case '4':
+                url = '/hdd/'
+                break
+            case '5':
+                url = '/bp/'
+                break
+            case '6':
+                url = '/cool/'
+                break
+            case '7':
+                url = '/set/'
+                break
+            case '8':
+                url = '/comp/'
+                break
+            default:
+                break
+        }
+
+        url += good['Артикул']
+
+        return url
     }
 
     function goodName(good) {

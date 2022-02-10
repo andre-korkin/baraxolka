@@ -618,11 +618,17 @@ h1 {
 
 .sidebar .cart h3.link {
   display: inline-block;
+}
+.sidebar .cart h3.link a{
   color: steelblue;
+  text-decoration: none;
+  padding-bottom: 1px;
+  border-bottom: solid 1px steelblue;
   transition: 0.3s;
 }
-.sidebar .cart h3.link:hover {
+.sidebar .cart h3.link a:hover {
   color: #000;
+  border-bottom: solid 1px #000;
 }
 
 .sidebar .cart .good > span {
@@ -668,11 +674,11 @@ h1 {
   cursor: pointer;
 }
 
-.good-list .link {
+.good-list .link a {
   color: steelblue;
-  cursor: pointer;
+  text-decoration: none;
 }
-.good-list .link:hover {
+.good-list .link a:hover {
   text-decoration: underline;
 }
 
