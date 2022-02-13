@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../header'
 import Categories from '../main/content/categories'
 import Path from '../main/content/path'
 import BeforeContent from '../beforeContent'
 import Main from '../main'
 import Footer from '../footer'
+import goods from '../db/goods'
 
 
 function Home({ match }) {
+    const [goodsFromDB, setGoodsFromDb] = useState()
+    useEffect(() => goods.then(data => setGoodsFromDb(data)), [])
+
     const catLabelInit = match.params.catLabel
     const catInit = () => {
         if(catLabelInit === undefined) return undefined
@@ -15,17 +19,17 @@ function Home({ match }) {
             switch(catLabelInit.toLowerCase()) {
                 case 'cpu':
                     return '0'
-                case 'motherboard':
+                case 'mb':
                     return '1'
                 case 'ram':
                     return '2'
-                case 'videocard':
+                case 'vc':
                     return '3'
                 case 'hdd':
                     return '4'
                 case 'bp':
                     return '5'
-                case 'cooler':
+                case 'cool':
                     return '6'
                 case 'set':
                     return '7'
@@ -82,12 +86,12 @@ function Home({ match }) {
                     isSorting={isSorting} onSorting={handleSorting} />
                 <Main page={'/'} search={search} isFavorites={isFavorites} isSorting={isSorting}
                     favorites={favorites} onFavorites={toggleFavorites} cart={cart} onCart={toggleCart}
-                    category={category} onSelect={handleSelect} filters={filters} />
+                    category={category} onSelect={handleSelect} goodsFromDB={goodsFromDB} filters={filters} />
             </>}
             {catLabelInit && goodArticle && <>
                 <Header page={''} />
                 <Path page={''} category={catLabelInit} />
-                <Main page={''} category={catLabelInit} goodArticle={goodArticle}
+                <Main page={''} category={catLabelInit} goodArticle={goodArticle} goodsFromDB={goodsFromDB}
                     favorites={favorites} onFavorites={toggleFavorites} cart={cart} onCart={toggleCart} />
             </>}
             <Footer />

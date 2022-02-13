@@ -1,15 +1,17 @@
 import React from 'react'
 import MySelect from '../mySelect'
-import goods from '../../../../db/goods'
 
 
-const Cores = ({ filters, onSelect }) => {
-    const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === '0')
+const Cores = ({ goodsFromDB, filters, onSelect }) => {
+    let goodList = goodsFromDB || []
+    if(typeof goodList === 'string') return null
+
+    goodList = goodList.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === '0')
     const cores = ['1', '2', '3', '4', '6', '8', '10', '12', 'Больше 12']
 
     let arr = []  // список имеющихся ядер
     goodList.forEach(good => {
-        const coreGood = good['Ядер/потоков'].split('/')[0]
+        const coreGood = good['Ядер\\потоков'].split('/')[0]
         !arr.includes(coreGood) && arr.push(coreGood)
     })
 

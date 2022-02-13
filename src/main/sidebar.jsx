@@ -20,31 +20,31 @@ import InCart from './sidebar/cart/inCart'
 import SidebarCart from './sidebar/good/sidebarCart'
 
 
-const Sidebar = ({ page, category, filters, onSelect, cart, onCart, order, orderCost}) => {
+const Sidebar = ({ page, goodsFromDB, category, filters, onSelect, cart, onCart, order, orderCost}) => {
     return (
         <div className="sidebar">
             {page === '/' && <>
-                <Condition category={category} filters={filters} onSelect={onSelect} />
-                {category === '6' && <TypeCooler filters={filters} onSelect={onSelect} />}
+                <Condition goodsFromDB={goodsFromDB} category={category} filters={filters} onSelect={onSelect} />
+                {category === '6' && <TypeCooler goodsFromDB={goodsFromDB} filters={filters} onSelect={onSelect} />}
                 {(['0', '1', '7', '8'].includes(category) || filters.typeCooler.value === 'Процессорный')
-                    && <Socket category={category} filters={filters} onSelect={onSelect} />}
-                {category === '0' && <Cores filters={filters} onSelect={onSelect} />}
-                {category === '0' && <Frequency filters={filters} onSelect={onSelect} />}
-                {['0', '1'].includes(category) && <FSB category={category} filters={filters} onSelect={onSelect} />}
-                {category === '0' && <TDP filters={filters} onSelect={onSelect} />}
-                {['2', '4'].includes(category) && <Platform category={category} filters={filters} onSelect={onSelect} />}
-                {category === '3' && <VideoInterface category={category} filters={filters} onSelect={onSelect} />}
-                {['1', '2', '3'].includes(category) && <RAMType category={category} filters={filters} onSelect={onSelect} />}
-                {['1', '2', '3'].includes(category) && <RAMSize category={category} filters={filters} onSelect={onSelect} />}
-                {['1', '2'].includes(category) && <RAMFraq category={category} filters={filters} onSelect={onSelect} />}
-                {category === '1' && <VideoInterface category={category} filters={filters} onSelect={onSelect} />}
-                {category === '4' && <HDDType filters={filters} onSelect={onSelect} />}
-                {['1', '4'].includes(category) && <HDDInterface category={category} filters={filters} onSelect={onSelect} />}
-                {category === '3' && <VideoBitrate filters={filters} onSelect={onSelect} />}
-                {category === '4' && <HDDSize filters={filters} onSelect={onSelect} />}
-                {category === '5' && <BPPower filters={filters} onSelect={onSelect} />}
+                    && <Socket goodsFromDB={goodsFromDB} category={category} filters={filters} onSelect={onSelect} />}
+                {category === '0' && <Cores goodsFromDB={goodsFromDB} filters={filters} onSelect={onSelect} />}
+                {category === '0' && <Frequency goodsFromDB={goodsFromDB} filters={filters} onSelect={onSelect} />}
+                {['0', '1'].includes(category) && <FSB goodsFromDB={goodsFromDB} category={category} filters={filters} onSelect={onSelect} />}
+                {category === '0' && <TDP goodsFromDB={goodsFromDB} filters={filters} onSelect={onSelect} />}
+                {['2', '4'].includes(category) && <Platform goodsFromDB={goodsFromDB} category={category} filters={filters} onSelect={onSelect} />}
+                {category === '3' && <VideoInterface goodsFromDB={goodsFromDB} category={category} filters={filters} onSelect={onSelect} />}
+                {['1', '2', '3'].includes(category) && <RAMType goodsFromDB={goodsFromDB} category={category} filters={filters} onSelect={onSelect} />}
+                {['1', '2', '3'].includes(category) && <RAMSize goodsFromDB={goodsFromDB} category={category} filters={filters} onSelect={onSelect} />}
+                {['1', '2'].includes(category) && <RAMFraq goodsFromDB={goodsFromDB} category={category} filters={filters} onSelect={onSelect} />}
+                {category === '1' && <VideoInterface goodsFromDB={goodsFromDB} category={category} filters={filters} onSelect={onSelect} />}
+                {category === '4' && <HDDType goodsFromDB={goodsFromDB} filters={filters} onSelect={onSelect} />}
+                {['1', '4'].includes(category) && <HDDInterface goodsFromDB={goodsFromDB} category={category} filters={filters} onSelect={onSelect} />}
+                {category === '3' && <VideoBitrate goodsFromDB={goodsFromDB} filters={filters} onSelect={onSelect} />}
+                {category === '4' && <HDDSize goodsFromDB={goodsFromDB} filters={filters} onSelect={onSelect} />}
+                {category === '5' && <BPPower goodsFromDB={goodsFromDB} filters={filters} onSelect={onSelect} />}
             </>}
-            {page === '' && <SidebarCart cart={cart} onCart={onCart} />}
+            {page === '' && <SidebarCart goodsFromDB={goodsFromDB} cart={cart} onCart={onCart} />}
             {page === '/cart' && <InCart order={order} orderCost={orderCost} />}
         </div>
     )

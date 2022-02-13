@@ -1,10 +1,12 @@
 import React from 'react'
 import MySelect from './mySelect'
-import goods from '../../../db/goods'
 
 
-const HDDInterface = ({ category, filters, onSelect }) => {
-    const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
+const HDDInterface = ({ goodsFromDB, category, filters, onSelect }) => {
+    let goodList = goodsFromDB || []
+    if(typeof goodList === 'string') return null
+
+    goodList = goodList.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
     const intrface = ['ATA', 'SATA', 'SATAII', 'SATA3']
 
     let arr = []  // список имеющихся интерфейсов

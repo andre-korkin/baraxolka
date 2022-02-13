@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import goods from '../../../db/goods'
 
 
-const SidebarCart = ({ cart, onCart }) => {
-    const goodList = cart && goods.filter(good => cart.includes(good['Артикул']))
+const SidebarCart = ({ goodsFromDB, cart, onCart }) => {
+    let goodList = goodsFromDB || []
+    if(typeof goodList === 'string') return null
+    
+    goodList = cart && goodList.filter(good => cart.includes(good['Артикул']))
 
     return cart.length > 0 && (
         <div className="cart">
@@ -85,7 +87,7 @@ const SidebarCart = ({ cart, onCart }) => {
     }
 
     function cost() {
-        return goodList ? goodList.map(good => good['Цена']).reduce((a, b) => a + b) : 0
+        return goodList ? goodList.map(good => Number(good['Цена'])).reduce((a, b) => a + b) : 0
     }
 }
 

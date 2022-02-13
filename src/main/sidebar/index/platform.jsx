@@ -1,10 +1,12 @@
 import React from 'react'
 import MySelect from './mySelect'
-import goods from '../../../db/goods'
 
 
-const Platform = ({ category, filters, onSelect }) => {
-    const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
+const Platform = ({ goodsFromDB, category, filters, onSelect }) => {
+    let goodList = goodsFromDB || []
+    if(typeof goodList === 'string') return null
+
+    goodList = goodList.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
     const pltfrm = ['компьютер', 'ноутбук']
 
     let arr = []  // список имеющихся платформ

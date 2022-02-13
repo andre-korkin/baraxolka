@@ -1,10 +1,12 @@
 import React from 'react'
 import MySelect from '../mySelect'
-import goods from '../../../../db/goods'
 
 
-const HDDType = ({ filters, onSelect }) => {
-    const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === '4')
+const HDDType = ({ goodsFromDB, filters, onSelect }) => {
+    let goodList = goodsFromDB || []
+    if(typeof goodList === 'string') return null
+
+    goodList = goodList.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === '4')
     const types = ['HDD', 'SSD']
 
     let arr = []  // список имеющихся типов

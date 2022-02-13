@@ -1,10 +1,12 @@
 import React from 'react'
 import MySelect from './mySelect'
-import goods from '../../../db/goods'
 
 
-const RAMSize = ({ category, filters, onSelect }) => {
-    const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
+const RAMSize = ({ goodsFromDB, category, filters, onSelect }) => {
+    let goodList = goodsFromDB || []
+    if(typeof goodList === 'string') return null
+    
+    goodList = goodList.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
     let ram = []
     if(category === '1') {
         ram = ['2 x 1 ГБ', '2 x 2 ГБ', '2 x 4 ГБ', '2 x 8 ГБ', '4 x 1 ГБ', '4 x 2 ГБ', '4 x 4 ГБ', '4 x 8 ГБ']

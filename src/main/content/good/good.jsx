@@ -1,10 +1,14 @@
 import React from 'react'
 import Photo from './photo'
 import Text from './text'
-import goods from '../../../db/goods'
 
 
-const Good = ({ category, goodArticle, favorites, onFavorites, cart, onCart }) => {
+const Good = ({ goodsFromDB, category, goodArticle, favorites, onFavorites, cart, onCart }) => {
+    if(goodsFromDB === undefined) return <h2 className='not_found'>Получение информации о товаре...</h2>
+
+    let goodList = goodsFromDB || []
+    if(typeof goodList === 'string') return <h2 className='not_found'>{goodList}</h2>
+
     const catInit = () => {
         if(category === undefined) return undefined
         else {
@@ -34,7 +38,7 @@ const Good = ({ category, goodArticle, favorites, onFavorites, cart, onCart }) =
     }
     if(!catInit()) return <h2 className='not_found'>Такой категории товаров не существует.</h2>
 
-    const good = goods.find(good => good['Артикул'] === goodArticle)
+    const good = goodList.find(good => good['Артикул'] === goodArticle)
     if(!good) return <h2 className='not_found'>Такого товара не существует.</h2>
     if(good['Количество'] === '0') return <h2 className='not_found'>Данный товар закончился.</h2>
 

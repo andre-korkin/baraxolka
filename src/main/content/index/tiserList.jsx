@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react'
-import goods from '../../../db/goods'
 import Pagination from '../pagination'
 import Tiser from './tiser'
 import _ from 'lodash'
 
 
-const TiserList =({ category, search, isFavorites, favorites, onFavorites, cart, onCart, isSorting, filters }) => {
+const TiserList = ({ goodsFromDB, category, search, isFavorites, favorites, onFavorites, cart, onCart, isSorting, filters }) => {
     const [currentPage, setCurrentPage] = useState(1)
     useEffect(() => setCurrentPage(1), [category])
 
-    let goodList = goods.filter(good => good['Количество'] !== '0')
+    if(goodsFromDB === undefined) return <h2 className='not_found'>Получение списка товаров...</h2>
+
+    let goodList = goodsFromDB || []
+    if(typeof goodList === 'string') return <h2 className='not_found'>{goodList}</h2>
+
+    goodList = goodList.filter(good => good['Количество'] !== '0')
 
     goodList = category ? goodList.filter(good => good['Артикул'][0] === category) : goodList
     
-    goodList = search
-        ? goodList.filter(good => (good['Название'] && good['Название'].toLowerCase().includes(search.toLowerCase()))
-            || (good['Бренд'] && good['Бренд'].toLocaleLowerCase().includes(search.toLocaleLowerCase())))
-        : goodList
+    goodList = search ? goodList.filter(good => (good['Название'] && good['Название'].toLowerCase().includes(search.toLowerCase()))
+        || (good['Бренд'] && good['Бренд'].toLocaleLowerCase().includes(search.toLocaleLowerCase()))) : goodList
 
     goodList = isFavorites ? goodList.filter(good => favorites.includes(good['Артикул'])) : goodList
 
@@ -36,7 +38,7 @@ const TiserList =({ category, search, isFavorites, favorites, onFavorites, cart,
     }
 
     if(category === '0') {
-        goodList = filters.core.value !== 'Все' ? goodList.filter(good => good['Ядер/потоков'].split('/')[0] === filters.core.value) : goodList
+        goodList = filters.core.value !== 'Все' ? goodList.filter(good => good['Ядер\\потоков'].split('/')[0] === filters.core.value) : goodList
         goodList = filters.cpuFrequency.value !== 'Все' ? goodList.filter(good => isHasFrequency(good)) : goodList
         goodList = filters.tdp.value !== 'Все' ? goodList.filter(good => Number(good['Мощность тепловыделения']) === filters.tdp.value) : goodList
     }
@@ -79,6 +81,9 @@ const TiserList =({ category, search, isFavorites, favorites, onFavorites, cart,
         goodList = filters.bpPower.value !== 'Все' ? goodList.filter(good => good['Мощность'] === filters.bpPower.value) : goodList
     }
 
+    goodList = goodList.map(good => {
+        return {...good, 'Цена': Number(good['Цена'])}
+    })
     const sortPriceGoodList = isSorting ? _.orderBy(goodList, ['Цена'], ['asc']) : goodList
 
     const allNumberPage = goodList && Math.ceil(goodList.length / 12)
@@ -101,8 +106,8 @@ const TiserList =({ category, search, isFavorites, favorites, onFavorites, cart,
         }
         else {
             if(good['Сокет']) {
-                if(good['Сокет'].includes(',')) {
-                    let arrSockets = good['Сокет'].split(',')
+                if(good['Сокет'].includes('/')) {
+                    let arrSockets = good['Сокет'].split('/')
                     arrSockets = arrSockets.map(item => item.trim())
                     return arrSockets.includes(filters.socket.value)
                 }

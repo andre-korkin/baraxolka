@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../header'
 import Path from '../main/content/path'
 import Main from '../main'
@@ -9,7 +9,11 @@ import goods from '../db/goods'
 function Cart() {
     !localStorage.getItem('cart') && localStorage.setItem('cart', JSON.stringify([]))
     const goodArticles = JSON.parse(localStorage.getItem('cart'))
-    const goodsInCart = goods.filter(good => goodArticles.includes(good['Артикул']))
+
+    const [goodsFromDB, setGoodsFromDb] = useState()
+    useEffect(() => goods.then(data => setGoodsFromDb(data)), [])
+
+    const goodsInCart = goodsFromDB.filter(good => goodArticles.includes(good['Артикул']))
 
     const orderInit = goodsInCart.map(good => {
         return {...good, amount: 1, cost: good['Цена']}

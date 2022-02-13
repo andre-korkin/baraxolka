@@ -1,10 +1,12 @@
 import React from 'react'
 import MySelect from './mySelect'
-import goods from '../../../db/goods'
 
 
-const Condition = ({ category, filters, onSelect }) => {
-    const goodList = goods.filter(good => good['Количество'] !== '0' && (category ? good['Артикул'][0] === category : true))
+const Condition = ({ goodsFromDB, category, filters, onSelect }) => {
+    let goodList = goodsFromDB || []
+    if(typeof goodList === 'string') return null
+    
+    goodList = goodList.filter(good => good['Количество'] !== '0' && (category ? good['Артикул'][0] === category : true))
     const vars = ['Все', 'Новое', 'Отличное', 'Хорошее', 'Среднее']
 
     let arr = []  // список имеющихся вариантов товара в наличии

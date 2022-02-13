@@ -1,10 +1,12 @@
 import React from 'react'
 import MySelect from './mySelect'
-import goods from '../../../db/goods'
 
 
-const RAMFraq = ({ category, filters, onSelect }) => {
-    const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
+const RAMFraq = ({ goodsFromDB, category, filters, onSelect }) => {
+    let goodList = goodsFromDB || []
+    if(typeof goodList === 'string') return null
+
+    goodList = goodList.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
     const ram = ['33', '66', '100', '133', '166', '200', '333', '400', '533', '667', '800', '1066', '1200', '1333', '1600', '2000', '2133', '2400', '2666', '3200']
 
     let arr = []  // список имеющихся ram

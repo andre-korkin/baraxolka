@@ -1,10 +1,12 @@
 import React from 'react'
 import MySelect from './mySelect'
-import goods from '../../../db/goods'
 
 
-const RAMType = ({ category, filters, onSelect }) => {
-    const goodList = goods.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
+const RAMType = ({ goodsFromDB, category, filters, onSelect }) => {
+    let goodList = goodsFromDB || []
+    if(typeof goodList === 'string') return null
+    
+    goodList = goodList.filter(good => good['Количество'] !== '0' && good['Артикул'][0] === category)
     const ram = ['DDR', 'DDR2', 'DDR3', 'DDR4', 'DDR5', 'GDDR5', 'GDDR6']
 
     let arr = []  // список имеющихся ram
