@@ -13,6 +13,7 @@ function Home({ match }) {
     useEffect(() => goods.then(data => setGoodsFromDb(data)), [])
 
     const catLabelInit = match.params.catLabel
+
     const catInit = () => {
         if(catLabelInit === undefined) return undefined
         else {
@@ -41,7 +42,7 @@ function Home({ match }) {
         }
     }
 
-    const [category, setCategory] = useState(catInit)
+    const [category, setCategory] = useState(catInit())
     const [search, setSearch] = useState('')
     const [isFavorites, setIsFavorites] = useState(false)
     const [isSorting, setIsSorting] = useState(false)
@@ -79,7 +80,7 @@ function Home({ match }) {
     return (
         <div className="container">
             {!goodArticle && <>
-                <Header page={'/'} />
+                <Header page={'/'} onChange={handleChange} />
                 <Categories category={category} onChange={handleChange} />
                 <BeforeContent search={search} onSearch={handleSearch}
                     isFavorites={isFavorites} onFavorites={handleFavorites}
@@ -89,8 +90,8 @@ function Home({ match }) {
                     category={category} onSelect={handleSelect} goodsFromDB={goodsFromDB} filters={filters} />
             </>}
             {catLabelInit && goodArticle && <>
-                <Header page={''} />
-                <Path page={''} category={catLabelInit} />
+                <Header page={''} onChange={handleChange} />
+                <Path page={''} category={catLabelInit} onChange={handleChange} />
                 <Main page={''} category={catLabelInit} goodArticle={goodArticle} goodsFromDB={goodsFromDB}
                     favorites={favorites} onFavorites={toggleFavorites} cart={cart} onCart={toggleCart} />
             </>}

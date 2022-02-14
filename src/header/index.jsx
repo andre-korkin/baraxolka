@@ -3,7 +3,7 @@ import TopMenu from './topMenu'
 import SocialLinks from './socialLinks'
 
 
-const Header = ({ page }) => {
+const Header = ({ page, onChange }) => {
     return (
         <div className="head">
             <table>
@@ -16,7 +16,7 @@ const Header = ({ page }) => {
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <TopMenu page={page} />
+                                            <TopMenu page={page} onChange={onChange} />
                                         </td>
                                         <td align="right">
                                             <SocialLinks />
