@@ -13,21 +13,26 @@ function Cart() {
     const [goodsFromDB, setGoodsFromDb] = useState()
     useEffect(() => goods.then(data => setGoodsFromDb(data)), [])
 
-    const goodsInCart = goodsFromDB.filter(good => goodArticles.includes(good['Артикул']))
+    // if(goodsFromDB === undefined) return <h2 className='not_found'>Получение списка товаров...</h2>
+
+    const goodList = goodsFromDB || []
+    // if(typeof goodList === 'string') return <h2 className='not_found'>{goodList}</h2>
+
+    const goodsInCart = goodList.filter(good => goodArticles.includes(good['Артикул']))
 
     const orderInit = goodsInCart.map(good => {
-        return {...good, amount: 1, cost: good['Цена']}
+        return {...good, amount: 1, cost: Number(good['Цена'])}
     })
 
     const [order, setOrder] = useState(orderInit)
-    const orderCost = goodsInCart.length !== 0 && order.map(good => good.amount * good['Цена']).reduce((a, b) => a + b)
+    console.log(order)
 
     return (
         <div className="container">
             <Header page={'/cart'} />
             <Path page={'/cart'} />
-            <Main page={'/cart'} order={order} orderCost={orderCost}
-                onIncrement={handleIncrement} onDecrement={handleDecrement} onDelete={handleDelete} />
+            <Main page={'/cart'} order={order} onIncrement={handleIncrement}
+                onDecrement={handleDecrement} onDelete={handleDelete} />
             <Footer />
         </div>
     )
