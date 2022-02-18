@@ -45,7 +45,7 @@ const Sidebar = ({ page, goodsFromDB, category, filters, onSelect, cart, onCart,
                 {category === '5' && <BPPower goodsFromDB={goodsFromDB} filters={filters} onSelect={onSelect} />}
             </>}
             {page === '' && <SidebarCart goodsFromDB={goodsFromDB} cart={cart} onCart={onCart} />}
-            {page === '/cart' && <InCart order={order} orderCost={orderCost} />}
+            {page === '/cart' && <InCart orderCost={orderCost} />}
         </div>
     )
 }
