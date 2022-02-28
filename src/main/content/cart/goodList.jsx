@@ -5,6 +5,9 @@ import DeleteItem from '../deleteItem'
 
 
 const GoodList = ({ order, onIncrement, onDecrement, onDelete }) => {
+    // if(order.length === 0) return <h2 className='not_found'>Получение списка товаров...</h2>
+    if(typeof order === 'string') return <h2 className='not_found'>{order}</h2>
+
     return order.length !== 0
         ? <table className="good-list">
             <thead>

@@ -1,8 +1,8 @@
 import React from 'react'
 
 
-const InCart = ({ order, orderCost }) => {
-    return order.length !== 0
+const InCart = ({ orderCost }) => {
+    return orderCost
         ? <div className="incart">
             <h3 className="sum">Итого: {orderCost} тг</h3>
             <h3 className="sale">Оформить заказ</h3>
