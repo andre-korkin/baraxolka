@@ -11,11 +11,16 @@ function Cart() {
     const goodArticles = JSON.parse(localStorage.getItem('cart'))
 
     const [order, setOrder] = useState([])
-    useEffect(() => goods.then(data => setOrder(data
-        .filter(good => JSON.parse(localStorage.getItem('cart')).includes(good['Артикул']))
-        .map(good => {
-            return {...good, amount: 1, cost: Number(good['Цена'])}
-        }))), [])
+    useEffect(() => goods.then(data => {
+        if(typeof data === 'string') setOrder(data)
+        else {
+            setOrder(data
+                .filter(good => JSON.parse(localStorage.getItem('cart')).includes(good['Артикул']))
+                .map(good => {
+                    return {...good, amount: 1, cost: Number(good['Цена'])}
+                }))
+        }
+    }), [])
 
     // if(typeof goodList === 'string') return <h2 className='not_found'>{goodList}</h2>
 
@@ -28,7 +33,8 @@ function Cart() {
     // const [order, setOrder] = useState()
     // console.log(order)
 
-    const orderCost = order.length !== 0 ? order.map(good => good.amount * good['Цена']).reduce((a, b) => a + b) : 0
+    const orderCost = typeof order !== 'string' && order.length !== 0
+        ? order.map(good => good.amount * good['Цена']).reduce((a, b) => a + b) : 0
 
     return (
         <div className="container">
