@@ -699,7 +699,8 @@ h1 {
   transform: scale(120%);
 }
 
-.good-list .edit {
+.good-list .edit a {
+  display: block;
   width: 30px;
   height: 30px;
   color: #fff;
@@ -709,10 +710,10 @@ h1 {
   background: steelblue;
   border: solid 1px #fff;
   border-radius: 50%;
-  cursor: pointer;
+  text-decoration: none;
   transition: 0.3s;
 }
-.good-list .edit:hover {
+.good-list .edit a:hover {
   transform: scale(120%);
 }
 
@@ -768,21 +769,23 @@ h1 {
   width: 150px;
 }
 
-.sidebar .incart .sale {
-  display: inline-block;
+.sidebar .incart .sale a {
+  display: block;
+  width: 100%;
+  margin-left: 30px;
   padding: 10px;
   border: solid 1px steelblue;
   border-radius: 5px;
   color: steelblue;
-  cursor: pointer;
+  text-decoration: none;
   box-shadow: 0 2px 4px #888;
   transition: 0.3s;
 }
-.sidebar .incart .sale:hover {
+.sidebar .incart .sale a:hover {
   background: steelblue;
   color: #fff;
 }
-.sidebar .incart .sale:active {
+.sidebar .incart .sale a:active {
   box-shadow: 0 1px 4px #888;
   transform: translateY(4px);
 }

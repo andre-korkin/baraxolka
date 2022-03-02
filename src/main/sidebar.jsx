@@ -18,6 +18,7 @@ import HDDSize from './sidebar/index/hdd/hddSize'
 import BPPower from './sidebar/index/bpPower'
 import InCart from './sidebar/cart/inCart'
 import SidebarCart from './sidebar/good/sidebarCart'
+import PanelIndex from './sidebar/panel/panelIndex'
 
 
 const Sidebar = ({ page, goodsFromDB, category, filters, onSelect, cart, onCart, order, orderCost}) => {
@@ -46,6 +47,7 @@ const Sidebar = ({ page, goodsFromDB, category, filters, onSelect, cart, onCart,
             </>}
             {page === '' && <SidebarCart goodsFromDB={goodsFromDB} cart={cart} onCart={onCart} />}
             {page === '/cart' && <InCart orderCost={orderCost} />}
+            {page === '/panel' && <PanelIndex />}
         </div>
     )
 }

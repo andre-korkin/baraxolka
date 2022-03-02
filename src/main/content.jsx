@@ -4,7 +4,7 @@ import GoodList from './content/cart/goodList'
 import Login from './content/login/form'
 import Good from './content/good/good'
 // import Order from './content/order/order'
-// import AdminGoodList from './content/admin/index/adminGoodList'
+import AdminGoodList from './content/panel/adminGoodList'
 
 
 const Content = ({ page, category, goodArticle, ...props }) => {
@@ -15,7 +15,7 @@ const Content = ({ page, category, goodArticle, ...props }) => {
             {page === '/login' && <Login />}
             {page === '' && category && goodArticle && <Good category={category} goodArticle={goodArticle} {...props} />}
             {/* <Order /> */}
-            {/* <AdminGoodList /> */}
+            {page === '/panel' && <AdminGoodList category={category} {...props} />}
         </div>
     )
 }
