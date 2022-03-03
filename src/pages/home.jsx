@@ -76,6 +76,7 @@ function Home({ match }) {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
 
     const goodArticle = match.params.goodArticle
+    const goodEdit = match.params.goodEdit
 
     return (
         <div className="container">
@@ -89,11 +90,16 @@ function Home({ match }) {
                     favorites={favorites} onFavorites={toggleFavorites} cart={cart} onCart={toggleCart}
                     category={category} onSelect={handleSelect} goodsFromDB={goodsFromDB} filters={filters} />
             </>}
-            {catLabelInit && goodArticle && <>
+            {catLabelInit && goodArticle && goodEdit !== 'edit' && <>
                 <Header page={''} onChange={handleChange} />
                 <Path page={''} category={catLabelInit} onChange={handleChange} />
                 <Main page={''} category={catLabelInit} goodArticle={goodArticle} goodsFromDB={goodsFromDB}
                     favorites={favorites} onFavorites={toggleFavorites} cart={cart} onCart={toggleCart} />
+            </>}
+            {catLabelInit && goodArticle && goodEdit === 'edit' && <>
+                <Header page={''} onChange={handleChange} />
+                <Path page={''} category={catLabelInit} onChange={handleChange} />
+                <Main page={''} category={catLabelInit} goodArticle={goodArticle} isEdit={true} goodsFromDB={goodsFromDB} />
             </>}
             <Footer />
         </div>

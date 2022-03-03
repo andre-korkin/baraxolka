@@ -18,10 +18,11 @@ import HDDSize from './sidebar/index/hdd/hddSize'
 import BPPower from './sidebar/index/bpPower'
 import InCart from './sidebar/cart/inCart'
 import SidebarCart from './sidebar/good/sidebarCart'
+import SidebarGoodEdit from './sidebar/good/sidebarGoodEdit'
 import PanelIndex from './sidebar/panel/panelIndex'
 
 
-const Sidebar = ({ page, goodsFromDB, category, filters, onSelect, cart, onCart, order, orderCost}) => {
+const Sidebar = ({ page, goodsFromDB, category, filters, onSelect, cart, onCart, goodArticle, isEdit, order, orderCost}) => {
     return (
         <div className="sidebar">
             {page === '/' && <>
@@ -45,7 +46,8 @@ const Sidebar = ({ page, goodsFromDB, category, filters, onSelect, cart, onCart,
                 {category === '4' && <HDDSize goodsFromDB={goodsFromDB} filters={filters} onSelect={onSelect} />}
                 {category === '5' && <BPPower goodsFromDB={goodsFromDB} filters={filters} onSelect={onSelect} />}
             </>}
-            {page === '' && <SidebarCart goodsFromDB={goodsFromDB} cart={cart} onCart={onCart} />}
+            {page === '' && !isEdit && <SidebarCart goodsFromDB={goodsFromDB} cart={cart} onCart={onCart} />}
+            {page === '' && isEdit && <SidebarGoodEdit goodsFromDB={goodsFromDB} goodArticle={goodArticle} />}
             {page === '/cart' && <InCart orderCost={orderCost} />}
             {page === '/panel' && <PanelIndex />}
         </div>

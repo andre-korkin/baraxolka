@@ -44,7 +44,7 @@ const Good = ({ goodsFromDB, category, goodArticle, favorites, onFavorites, cart
 
     return (
         <>
-            <Photo url={`../img/${category}/${good['Фото']}`} />
+            <Photo url={`/img/${category}/${good['Фото']}`} />
             <Text good={good} favorites={favorites} onFavorites={onFavorites} cart={cart} onCart={onCart} />
         </>
     )

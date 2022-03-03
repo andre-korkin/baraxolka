@@ -11,7 +11,7 @@ function App() {
             <Route path='/login' component={Login} />
             <Route path='/cart' component={Cart} />
             <Route path='/panel' component={Panel} />
-            <Route path='/:catLabel?/:goodArticle?' render={(props => <Home {...props} />)} />
+            <Route path='/:catLabel?/:goodArticle?/:goodEdit?' render={(props => <Home {...props} />)} />
         </Switch>
     )
 }
